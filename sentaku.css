@@ -1,0 +1,9 @@
+.kesu{
+    display: none;
+}
+.shitumon{
+    display: none;
+}
+.shitumon.ima{
+    display: block;
+}
