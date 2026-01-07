@@ -1,0 +1,23 @@
+.hidden {
+  display: none;
+
+}
+.nav ul li {
+    list-style-type: none;
+    display: inline;
+    margin: 0 8px;
+    text-align: center;
+    color: rgb(0, 0, 200);
+    
+}
+.nav ul li a {
+    text-decoration: none;
+}
+.nav ul li a:visited {
+    color: rgb(0, 0, 200);
+}
+
+.nav ul li a:hover {
+    color: rgb(23, 156, 136);
+    text-decoration: underline;
+}

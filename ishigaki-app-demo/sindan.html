@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <meta charset="utf-8">
+        <title>石垣サイト</title>
+        <meta name="viewport" content="width=device-width,intial-scale=1.0">
+        <meta name="discription" content="">
+        <link rel="stylesheet" href="sindan.css">
+    </head>
+    <body>
+        <h1>石垣予備診断入力</h1>
+        <button onclick="location.href = 'index.html'">戻る</button>
+
+        <form onsubmit="location.href='result.html'; return false;">
+            <label>地盤について</label><br>
+                <ul>
+                    <li><input type="radio" name = q1 data-score="0">①硬い地盤（Ⅰ種地盤相当）</li>
+                    <li><input type="radio" name = q1 data-score="1">②普通の地盤（Ⅱ種地盤相当）</li>
+                    <li><input type="radio" name = q1 data-score="2">③軟弱な地盤（Ⅲ種地盤相当）</li>
+                    <li><input type="radio" name = q1 data-score="1">④不明</li>
+                </ul>
+            <input type="submit" value="送信する" ></input>
+        </form>
+    </body>
+</html>
