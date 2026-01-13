@@ -1,0 +1,30 @@
+/* ラジオボタン自体は非表示（フォーカスも邪魔しないよう off-screen に） */
+.btn-group input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* ボタン風ラベル */
+.select-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  border: 2px solid #007bff;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  user-select: none;
+}
+
+/* ホバー時 */
+.select-btn:hover {
+  background: #e6f0ff;
+}
+
+/* 選択されているラジオボタンに対応するラベルだけスタイル変更 */
+.btn-group input[type="radio"]:checked + .select-btn {
+  background: #007bff;
+  color: #fff;
+}
