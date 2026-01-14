@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="sindan.css">
     </head>
     <body>
-        <p id="modoru"><a href="index.html">←</a></p>
+        <p id="modoru"><a href="index.html">＜戻る</a></p>
         <h1>石垣予備診断入力</h1>
 
         <div>
@@ -135,12 +135,11 @@
                         <label><input type="radio" name="maxkoubai_ichi" value="右" /> 右</label>
                         <label><input type="radio" name="maxkoubai_ichi" value="隅・右部" /> 隅・右部</label>
                     </div>
+                    <div>
+                        <label for="menseki">面積（㎡）</label>
+                        <input type="number" step="0.01" id="menseki" name="menseki" />
+                    </div>
                 </fieldset>
-
-                <div>
-                    <label for="menseki">面積（㎡）</label>
-                    <input type="number" step="0.01" id="menseki" name="menseki" />
-                </div>
             </fieldset>
 
             <!-- 積み方 -->
@@ -152,10 +151,6 @@
                     <label><input type="radio" name="tsumikata_sumi" value="算木積み" /> 算木積み</label>
                     <label><input type="radio" name="tsumikata_sumi" value="非算木積み" /> 非算木積み</label>
                     <label><input type="radio" name="tsumikata_sumi" value="その他" /> その他</label>
-                    <div>
-                        <label for="tsumikataSumiOther">（具体的に）</label>
-                        <input type="text" id="tsumikataSumiOther" name="tsumikataSumiOther" />
-                    </div>
                 </fieldset>
 
                 <fieldset>
@@ -178,10 +173,6 @@
                     <label><input type="radio" name="sekizai_keijou" value="切石" /> 切石</label>
                     <label><input type="radio" name="sekizai_keijou" value="間知石（空積み・練積み）" /> 間知石（空積み・練積み）</label><br />
                     <label><input type="radio" name="sekizai_keijou" value="その他" /> その他</label>
-                    <div>
-                        <label for="sekizaiKeijouOther">（具体的に）</label>
-                        <input type="text" id="sekizaiKeijouOther" name="sekizaiKeijouOther" />
-                    </div>
                 </fieldset>
 
                 <fieldset>
@@ -190,8 +181,6 @@
                     <label><input type="radio" name="aibata" value="粗加工（打込ハギ）" /> 粗加工（打込ハギ）</label>
                     <label><input type="radio" name="aibata" value="精加工（切込ハギ）" /> 精加工（切込ハギ）</label><br />
                     <label><input type="radio" name="aibata" value="その他" /> その他</label>
-                    <label for="aibataOther">（具体的に）</label>
-                    <input type="text" id="aibataOther" name="aibataOther" />
                 </fieldset>
 
                 <fieldset>
@@ -201,8 +190,6 @@
                     <label><input type="radio" name="ganseki" value="凝灰岩" /> 凝灰岩</label>
                     <label><input type="radio" name="ganseki" value="砂岩" /> 砂岩</label><br />
                     <label><input type="radio" name="ganseki" value="その他" /> その他</label>
-                    <label for="gansekiOther">（具体的に）</label>
-                    <input type="text" id="gansekiOther" name="gansekiOther" />
                 </fieldset>
 
                 <fieldset>
@@ -236,8 +223,8 @@
             <fieldset>
                 <legend>年代</legend>
                 <div>
-                    <label for="nendai">年代</label>
                     <input type="text" id="nendai" name="nendai" />
+                    <label for="nendai">年代</label>
                     <label><input type="checkbox" name="nendaiFumei" value="不明" /> 不明</label>
                 </div>
             </fieldset>

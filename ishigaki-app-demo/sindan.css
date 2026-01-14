@@ -1,30 +1,382 @@
-/* ラジオボタン自体は非表示（フォーカスも邪魔しないよう off-screen に） */
-.btn-group input[type="radio"] {
+/* ===== Modern form UI for sindan.html ===== */
+
+:root{
+  --bg1:#0b1020;
+  --bg2:#101a33;
+
+  --card: rgba(255,255,255,.08);
+  --card2: rgba(255,255,255,.06);
+  --border: rgba(255,255,255,.14);
+
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.72);
+
+  --primary:#4f7cff;
+  --primary-hover:#3c6df6;
+  --ring: rgba(79,124,255,.45);
+
+  --shadow: 0 18px 40px rgba(0,0,0,.35);
+  --shadow-soft: 0 10px 22px rgba(0,0,0,.18);
+
+  --radius: 16px;
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  color: var(--text);
+
+  background:
+    radial-gradient(900px 420px at 20% 10%, rgba(79,124,255,.25), transparent 60%),
+    radial-gradient(700px 360px at 85% 25%, rgba(255,255,255,.10), transparent 55%),
+    linear-gradient(160deg, var(--bg1), var(--bg2));
+
+  min-height: 100dvh;
+  padding: 18px 14px 80px; /* 下に送信ボタンがあるので余白多め */
+}
+
+/* 上部の戻る */
+#modoru{
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 1000;
+  margin: 0;
+}
+
+#modoru a{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 14px;
+
+  color: #fff;
+  background: rgba(0,0,0,.55);
+  border: 1px solid rgba(255,255,255,.35);
+
+  box-shadow: 0 10px 22px rgba(0,0,0,.25);
+  backdrop-filter: blur(6px);
+
+  transition: transform .12s ease, background-color .12s ease;
+}
+
+/* ← アイコンを強制的に付ける */
+#modoru a::before{
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* hover */
+#modoru a:hover{
+  background: rgba(0,0,0,.75);
+  transform: translateY(-1px);
+}
+
+/* focus（キーボード操作） */
+#modoru a:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ring), 0 10px 22px rgba(0,0,0,.25);
+}
+
+/* タイトル */
+h1{
+  text-align: center;
+  margin: 10px 0 22px;
+
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 900;
+  letter-spacing: .04em;
+
+  text-shadow: 0 10px 26px rgba(0,0,0,.35);
+}
+
+/* ページ全体の最大幅（フォームが横に伸びすぎないように） */
+body > div{
+  max-width: 980px;
+  margin: 0 auto 18px;
+}
+
+/* 見出し帯：＜基本情報＞ ＜予備診断＞ */
+.category-title{
+  position: relative;
+  margin: 32px 0 22px;
+  padding: 20px 18px;
+
+  border-radius: 20px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(79,124,255,.95),
+      rgba(79,124,255,.75)
+    );
+
+  color: #fff;
+  border: none;
+  box-shadow:
+    0 20px 45px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+/* 左アクセントライン（章っぽさ） */
+.category-title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 6px;
+  border-radius: 6px;
+  background: rgba(255,255,255,.85);
+}
+
+/* 見出し文字 */
+.category-title label{
+  display: block;
+  font-size: clamp(18px, 2.6vw, 24px);
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-shadow: 0 6px 18px rgba(0,0,0,.35);
+}
+
+/* 「＜ ＞」をさらに強調したい場合 */
+.category-title label::first-letter{
+  letter-spacing: .1em;
+}
+
+/* 小見出し：1. 基礎点項目 / 2. 変状点項目 */
+.category-title-sub{
+  margin: 20px 0 12px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.06);
+  border-left: 5px solid var(--primary);
+}
+
+.category-title-sub label{
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+/* fieldset をカード化 */
+fieldset{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.06);
+  border-radius: var(--radius);
+  padding: 14px 14px 12px;
+  margin: 12px 0;
+  box-shadow: var(--shadow-soft);
+}
+
+legend{
+  padding: 0 8px;
+  color: var(--text);
+  font-weight: 800;
+}
+
+/* fieldset内の行間 */
+fieldset > div{
+  margin: 10px 0;
+}
+
+/* テキスト/数値入力を統一 */
+input[type="text"],
+input[type="number"],
+textarea{
+  width: min(10%);
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(0,0,0,.18);
+  color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+textarea{
+  width: min(100%);
+  min-height: 110px;
+  resize: vertical;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder{
+  color: rgba(255,255,255,.55);
+}
+
+input[type="text"]:focus-visible,
+input[type="number"]:focus-visible,
+textarea:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ring);
+  border-color: rgba(79,124,255,.8);
+}
+
+/* ラジオ・チェックの並び */
+label{
+  line-height: 1.6;
+}
+fieldset label{
+  margin-right: 10px;
+}
+fieldset span{
+  color: var(--muted);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+/* ===== 予備診断のボタン群（既存構造を活かす） ===== */
+
+/* サブリスト（b. 石垣の形状 / a. 築石の変状 など） */
+.sublist-group{
+  margin: 14px 0;
+  padding: 12px 12px 2px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+}
+
+.sublist-title{
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+}
+.sublist-title label{
+  font-weight: 900;
+}
+
+/* 質問ブロック（a.地盤、ア石垣タイプ等） */
+.btn-group{
+  margin: 12px 0;
+  padding: 12px;
+  border-radius: var(--radius);
+  background: rgba(0,0,0,.14);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.item-title{
+  margin: 0 0 10px;
+}
+.item-title label{
+  font-weight: 900;
+}
+
+/* ラジオボタンは非表示（現行踏襲） */
+.btn-group input[type="radio"]{
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* ボタン風ラベル */
-.select-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 5px;
-  border: 2px solid #007bff;
-  background: #fff;
+/* ボタン風ラベル：縦に並べて読みやすく（長文が多いので） */
+.select-btn{
+  display: block;
+  width: 100%;
+  padding: 12px 12px;
+  margin: 8px 0;
+  border-radius: 14px;
+
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+
   cursor: pointer;
-  border-radius: 5px;
   user-select: none;
+  box-shadow: 0 8px 18px rgba(0,0,0,.18);
+
+  transition: transform .12s ease, background-color .12s ease, border-color .12s ease, box-shadow .12s ease;
 }
 
-/* ホバー時 */
-.select-btn:hover {
-  background: #e6f0ff;
+/* hover */
+.select-btn:hover{
+  background: rgba(255,255,255,.10);
+  transform: translateY(-1px);
 }
 
-/* 選択されているラジオボタンに対応するラベルだけスタイル変更 */
-.btn-group input[type="radio"]:checked + .select-btn {
-  background: #007bff;
-  color: #fff;
+/* checked */
+.btn-group input[type="radio"]:checked + .select-btn{
+  background: linear-gradient(180deg, rgba(79,124,255,1), rgba(79,124,255,.82));
+  border-color: rgba(79,124,255,.85);
+  box-shadow: var(--shadow);
+}
+
+/* フォーカス（キーボード操作） */
+.btn-group input[type="radio"]:focus-visible + .select-btn{
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ring), 0 8px 18px rgba(0,0,0,.18);
+}
+
+/* 未修正エリアの ul/li を見やすく（現状は素の箇条書き） */
+ul{
+  margin: 8px 0 14px 0;
+  padding-left: 18px;
+}
+li{
+  margin: 6px 0;
+  color: var(--text);
+}
+
+/* ===== 送信ボタン（メインCTA） ===== */
+#sousin{
+  position: sticky;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+
+  display: block;
+  width: min(980px, calc(100% - 28px));
+  margin: 18px auto 0;
+
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(79,124,255,.85);
+
+  background: linear-gradient(180deg, rgba(79,124,255,1), rgba(79,124,255,.82));
+  color: var(--text);
+
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: .02em;
+
+  box-shadow: var(--shadow);
+  cursor: pointer;
+
+  transition: transform .12s ease, background-color .12s ease;
+}
+
+#sousin:hover{
+  background: linear-gradient(180deg, var(--primary-hover), rgba(60,109,246,.86));
+  transform: translateY(-2px);
+}
+
+#sousin:active{
+  transform: translateY(0px) scale(.99);
+}
+
+#sousin:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ring), var(--shadow);
+}
+
+/* モーションが苦手な人向け */
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; }
+}
+
+/* モバイル調整 */
+@media (max-width: 520px){
+  fieldset{ padding: 12px; }
+  .select-btn{ padding: 12px 10px; }
+  input[type="text"], input[type="number"], textarea{ width: 20%; }
 }

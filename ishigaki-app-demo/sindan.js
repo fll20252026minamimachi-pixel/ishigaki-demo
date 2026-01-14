@@ -191,31 +191,86 @@ function henjotenData() {
 }
 
 function kihonjohoData() {
+    // radioの選択値を文字列で取得（未選択なら ""）
+    const getRadioValue = (name) => {
+        const el = getCheckedRadio(name);
+        return el ? el.value : "";
+    };
+
+    // テキスト/数値入力を文字列で取得（未入力なら ""）
+    const getValueById = (id) => {
+        const el = document.getElementById(id);
+        return el ? (el.value ?? "").trim() : "";
+    };
+
+    // 「石垣面位置」：その他の場合は具体内容を付ける
+    const menichi = getRadioValue("ishigaki_ichi");
+    const menichiOther = getValueById("menichiOther");
+    const ishigakiMenichi =
+        menichi === "その他" ? `その他（${menichiOther}）` : menichi;
+
+    // 地盤
+    const jiban = `${getRadioValue("jiban_shubetsu")}、${getRadioValue("jiban_kubun")}、${getRadioValue("jiban_chikei")}`;
+
+    // 石垣延長
+    const ishigaki_encho = `天端 ${getValueById("enchouTenba")}m、下端 ${getValueById("enchouKatanba")}m`;
+
+    // 石垣高さ
+    const ishigaki_takasa = `最大の高さ ${getValueById("maxTakasa")}m (${getRadioValue("takasa_ichi")})`;
+
+    // 勾配
+    const umu = getRadioValue("sori");
+    const koubai = (umu === "有")
+        ? `反りの有無（${umu}）、頂部から約２ｍ間の最大勾配 ${getValueById("maxKoubai")}度(${getRadioValue("maxkoubai_ichi")})`
+        : `反りの有無（${umu}）、平均勾配 ${getValueById("heikinKoubai")}度`;
+
+    // 築石控長
+    const tsukiishi = `${getRadioValue("tsukiishi_hikae")}(平均約${getValueById("tsukiishiAvg")}cm)`;
+
+    // 年代：不明チェックがあれば "不明"
+    const nendaiFumeiChecked =
+        document.querySelector('input[type="checkbox"][name="nendaiFumei"]')?.checked ?? false;
+    const nendai = nendaiFumeiChecked ? "不明" : `${getValueById("nendai")}年代`;
+
+    // 被災の履歴：ありの場合は詳細も保持
+    const hisai = getRadioValue("hisai");
+    const hisaiDetail = getValueById("hisaiDetail");
+    const hisaiSaved = (hisai === "あり")
+        ? `${hisai} 詳細：${hisaiDetail}`
+        : `${hisai}`;
+
+    // 改修の履歴：ありの場合は詳細も保持
+    const kaishu = getRadioValue("kaishu");
+    const kaishuDetail = getValueById("kaishuDetail");
+    const kaishuSaved = (kaishu === "あり")
+        ? `${kaishu} 詳細：${kaishuDetail}`
+        : `${kaishu}`;
+
     return {
-        "石垣番号": document.getElementById("ishigakiNo").value,
-        "地区名": document.getElementById("chikuName").value,
-        "石垣面位置": "",
+        "石垣番号": { "text": getValueById("ishigakiNo") },
+        "地区名": { "text": getValueById("chikuName") },
+        "石垣面位置": { "text": ishigakiMenichi },
         "構造規模": [
-            { "地盤": "" },
-            { "造成": "" },
-            { "石垣延長": "" },
-            { "石垣高さ": "" },
-            { "勾配": "" },
-            { "面積": "" },
+            { "地盤": { "text": jiban } },
+            { "造成": { "text": getRadioValue("zousei") } },
+            { "石垣延長": { "text": ishigaki_encho } },
+            { "石垣高さ": { "text": ishigaki_takasa } },
+            { "勾配": { "text": koubai } },
+            { "面積(㎡)": { "text": getValueById("menseki") } }
         ],
         "積み方": [
-            { "隅部": "" },
-            { "平部": "" },
+            { "隅部": { "text": getRadioValue("tsumikata_sumi") } },
+            { "平部": { "text": getRadioValue("tsumikata_hira") } }
         ],
         "石材": [
-            { "形状": "" },
-            { "合端加工": "" },
-            { "岩石種": "" },
-            { "築石控長": "" },
+            { "形状": { "text": getRadioValue("sekizai_keijou") } },
+            { "合端加工": { "text": getRadioValue("aibata") } },
+            { "岩石種": { "text": getRadioValue("ganseki") } },
+            { "築石控長": { "text": tsukiishi } }
         ],
-        "石垣タイプ": "",
-        "年代": "",
-        "被災の履歴": "",
-        "回収の履歴": "",
+        "石垣タイプ": { "text": getRadioValue("ishigakiType") },
+        "年代": { "text": nendai },
+        "被災の履歴": { "text": hisaiSaved },
+        "改修の履歴": { "text": kaishuSaved }
     };
 }
