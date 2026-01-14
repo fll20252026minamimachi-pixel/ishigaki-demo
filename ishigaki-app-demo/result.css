@@ -1,0 +1,80 @@
+/* result.css */
+.groupTitle {
+  text-align: left;
+  font-weight: 700;
+  background: #fff;
+  margin-top: 24px;
+}
+
+.tableTitle {
+  text-align: left;
+  font-weight: 700;
+  background: #fff;
+}
+
+.resultTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.resultTable th,
+.resultTable td {
+  border: 1px solid #333;
+  padding: 8px 10px;
+  vertical-align: middle;
+}
+
+.resultTable .head {
+  background: #f2f2f2;
+  font-weight: 700;
+  text-align: center;
+}
+
+.resultTable td.label {
+  width: 22%;
+  white-space: nowrap;
+}
+
+.resultTable td.text {
+  width: 53%;
+}
+
+.resultTable td.point {
+  width: 10%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.resultTable td.note {
+  width: 15%;
+}
+
+.resultTable td.single {
+  font-weight: 600;
+}
+
+.resultTable td.sub {
+  padding-left: 22px; /* 子項目をインデント */
+}
+
+.resultTable td.category {
+  background: #fff;
+  font-weight: 600;
+}
+
+.resultTable td.totalLabel {
+  text-align: center;
+  font-weight: 700;
+  background: #fff;
+}
+
+.resultTable td.totalPoint {
+  text-align: center;
+  font-weight: 700;
+}
+
+.resultTable td.totalNote {
+  background: #fff;
+}

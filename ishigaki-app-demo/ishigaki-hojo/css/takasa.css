@@ -160,8 +160,14 @@ li button{
   padding-left: 3px;
   font-size: 35px;
   background-color: rgb(38, 38, 38);
-  color: rgb(255, 255, 255);
 }
+#modoru a{
+  color: white;
+}
+header {
+  background-color: black;
+}
+
 @media (max-width: 600px) {
   body {
     font-size: 16px;          /* 文字サイズは標準くらい */
@@ -192,7 +198,7 @@ li button{
   max-width: 100%;  /* 画面からはみ出さないように */
   height: auto;     /* 縦横比を保ったまま縮める */
   margin: 0 auto 20px;  /* 中央に配置＋下に少し余白 */
-}
+  }
 }
 
 

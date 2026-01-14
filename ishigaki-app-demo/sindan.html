@@ -8,126 +8,519 @@
         <link rel="stylesheet" href="sindan.css">
     </head>
     <body>
+        <p id="modoru"><a href="index.html">←</a></p>
         <h1>石垣予備診断入力</h1>
-        <button onclick="location.href = 'index.html'">戻る</button>
 
-        <form>
-            <label>地盤について</label><br>
-                <ul>
-                    <li><input type="radio" name = "q1" data-score="0"> 硬い地盤（Ⅰ種地盤相当）</li>
-                    <li><input type="radio" name = "q1" data-score="1"> 普通の地盤（Ⅱ種地盤相当）</li>
-                    <li><input type="radio" name = "q1" data-score="2"> 軟弱な地盤（Ⅲ種地盤相当）</li>
-                    <li><input type="radio" name = "q1" data-score="1"> 不明</li>
-                 </ul><br>
-                 <label>石垣の形状について</label><br>
-                    <label>   石垣タイプ</label><br>
-                    <ul><li><input type="radio" name = q2 data-score="0"> 非石塁（栗石層＋地山）</li>
-                        <li><input type="radio" name = q2 data-score="1"> 非石塁（栗石層＋盛土）</li>
-                        <li><input type="radio" name = q2 data-score="1"> 半石塁（栗石層＋地山）</li>
-                        <li><input type="radio" name = q2 data-score="2"> 半石塁（栗石層＋盛土）</li>
-                        <li><input type="radio" name = q2 data-score="3"> 半石塁突出形（突出しているもの）</li>
-                        <li><input type="radio" name = q2 data-score="2"> 石塁（栗石＋盛土）</li>
-                        <li><input type="radio" name = q2 data-score="3"> 石塁（栗石のみ）</li>
-                        <li><input type="radio" name = q2 data-score="3"> 栗石なし、盛土のみ</li>
-                        <li><input type="radio" name = q2 data-score="3"> 不明</li>
-                    </ul><br>
-                <label>石垣の勾配</label>
-                <ul>
-                        <li><input type="radio" name = q3 data-score="2"> 高さ２ｍ未満 かつ勾配８５°以上</li>
-                        <li><input type="radio" name = q3 data-score="0"> 高さ２ｍ未満 かつ勾配８５°以下</li>
-                        <li><input type="radio" name = q3 data-score="2"> 高さ２ｍ以上４ｍ未満 かつ勾配８５°以下</li>
-                        <li><input type="radio" name = q3 data-score="0"> 高さ２ｍ以上４ｍ未満 かつ勾配８０°以下</li>
-                        <li><input type="radio" name = q3 data-score="2"> 高さ４ｍ以上６ｍ未満 かつ勾配８５°以下</li>
-                        <li><input type="radio" name = q3 data-score="1"> 高さ４ｍ以上６ｍ未満 かつ勾配７３°以下 </li>
-                        <li><input type="radio" name = q3 data-score="0"> 高さ４ｍ以上６ｍ未満 かつ勾配７０°以下</li>
-                        <li><input type="radio" name = q3 data-score="2"> 高さ６ｍ以上１０ｍ未満 かつ勾配８０°以下 </li>
-                        <li><input type="radio" name = q3 data-score="1"> 高さ６ｍ以上１０ｍ未満 かつ勾配７０°以下</li>
-                        <li><input type="radio" name = q3 data-score="0"> 高さ６ｍ以上１０ｍ未満 かつ勾配６５°以下</li>
-                        <li><input type="radio" name = q3 data-score="2"> 高さ１０ｍ以上１６ｍ未満 かつ勾配７５°以下</li>
-                        <li><input type="radio" name = q3 data-score="1"> 高さ１０ｍ以上１６ｍ未満 かつ勾配７０°以下</li>
-                        <li><input type="radio" name = q3 data-score="0"> 高さ１０ｍ以上１６ｍ未満 かつ勾配６５°以下 </li>
-                        <li><input type="radio" name = q3 data-score="2"> 高さ１６ｍ以上 かつ勾配７５°以下</li>
-                        <li><input type="radio" name = q3 data-score="1"> 高さ１６ｍ以上 かつ勾配６５°以下</li>
-                        <li><input type="radio" name = q3 data-score="0"> 高さ１６ｍ以上 かつ勾配６０°以下 </li>
-                        <li><input type="radio" name = q3 data-score="3"> 上記以外</li>
-                </ul><br>
-                <label>過去の履歴</label><br>
-                    <label>被災・修復履歴</label><br>
-                    <ul><li><input type="radio" name = q4 data-score="0"> 崩れたり変状した記録はない。</li>
-                        <li><input type="radio" name = q4 data-score="3"> ２回以上崩れた記録・痕跡がある。</li>
-                        <li><input type="radio" name = q4 data-score="2"> １回崩れた記録・痕跡ある。</li>
-                        <li><input type="radio" name = q4 data-score="2"> ２回以上変状した記録・痕跡がある。</li>
-                        <li><input type="radio" name = q4 data-score="1"> １回変状した記録・痕跡がある。</li>
-                        <li><input type="radio" name = q4 data-score="3"> 程度は不明だが、２回以上被災した記録・痕跡がある。</li>
-                        <li><input type="radio" name = q4 data-score="2"> 程度は不明だが、１回被災した記録・痕跡がある。</li>
-                        <li><input type="radio" name = q4 data-score="3"> ２回以上積み直しを伴う修理を行った記録・痕跡がある。</li>
-                        <li><input type="radio" name = q4 data-score="2"> １回積み直しを伴う修理を行った記録・痕跡がある。</li>
-                        <li><input type="radio" name = q4 data-score="1"> 積み直しを伴わない修理を行った記録・痕跡がある。</li>
-                        <li><input type="radio" name = q4 data-score="2"> 不明。</li>
-                    </ul><br>
-                    <label>修理の方法</label><br>
-                    <ul><li><input type="radio" name = q5 data-score="0"> 修理にあたり特段の対策はしていない。</li>
-                        <li><input type="radio" name = q5 data-score="-1"> 修理にあたり原因の分析と伝統工法の範囲で改善が図られた。</li>
-                        <li><input type="radio" name = q5 data-score="-2"> 修理にあたり原因の分析と具体的な改良工法がとられた（土壌改良、栗石の粒度改良など、を除く）。</li>
-                        <li><input type="radio" name = q5 data-score="-3"> 修理にあたり原因の分析と構造解析を行い、必要性能を概ね満たす改良、補強を行った。</li>
-                        <li><input type="radio" name = q5 data-score="-1"> 修理にあたり在来仕様にこだわらず現代的な手法を用いて対策がなされた。 </li>
-                        <li><input type="radio" name = q5 data-score="0"> 不明。</li>
-                    </ul><br>
-                    <label>築石の変状</label><br>
-                    <label>緩み、築石の目地の開き</label><br>
-                    <ul>
-                        <li><input type="radio" name = q6 data-score="0"> 見られない。</li>
-                        <li><input type="radio" name = q6 data-score="1"> 若干の緩み、築石の目地の開きがある。</li>
-                        <li><input type="radio" name = q6 data-score="2"> 緩み、築石の目地の開きが随所に見られる。</li>
-                        <li><input type="radio" name = q6 data-score="4"> 緩み、築石の目地の開きが著しい。</li>
-                    </ul><br>
-                    
-                    <label>孕み</label><br>
-                    <ul>
-                        <li><input type="radio" name = q7 data-score="0"> 見られない。</li>
-                        <li><input type="radio" name = q7 data-score="1"> わずかに孕みがある。</li>
-                        <li><input type="radio" name = q7 data-score="2"> 孕みがある（孕みだし指数６未満）。 </li>
-                        <li><input type="radio" name = q7 data-score="4"> 局所的な孕みが著しい （孕みだし指数６以上）。</li>
-                        <li><input type="radio" name = q7 data-score="4"> 全体的な孕みが見られる。</li>
-                    </ul><br>
-                    <label>割れ、抜け落ち、崩れ</label>
-                    <ul>
-                        <li><input type="radio" name = q8 data-score="0"> 見られない。</li>
-                        <li><input type="radio" name = q8 data-score="1"> 築石、角石の割れ、間詰石の抜け落ちが若干見られる。</li>
-                        <li><input type="radio" name = q8 data-score="2"> 築石、角石の割れ、間詰石の抜け落ちが随所で見られる。</li>
-                        <li><input type="radio" name = q8 data-score="4"> 築石、角石の割れ、間詰石の抜け落ち、築石の崩れが著しい。</li>
-                    </ul><br>
-                    <label>周辺の変状</label><br>
-                    <label>天端または栗石部の沈下、地割れ </label>
-                    <ul>
-                        <li><input type="radio" name = q9 data-score="0"> 見られない。</li>
-                        <li><input type="radio" name = q9 data-score="1"> 天端または栗石部の沈下が見られる。 </li>
-                        <li><input type="radio" name = q9 data-score="3"> 天端周辺に地割れがある、地割れが入ったことがある。</li>
-                    </ul><br>
-                    <label>基礎部の変状</label>
-                    <ul>
-                        <li><input type="radio" name = q10 data-score="0"> 見られない。</li>
-                        <li><input type="radio" name = q10 data-score="3"> 基礎部の変状が見られる。</li>
-                    </ul><br>
-                    <label>変状の進行状況</label>
-                    <ul>
-                        <li><input type="radio" name = q11 data-score="0"> 変状がほぼない</li>
-                        <li><input type="radio" name = q11 data-score="0"> 変状があり観測を行っており、変化が無い。</li>
-                        <li><input type="radio" name = q11 data-score="1"> 変状があり観測を行っていないが、目視で大きな変化が無い。 </li>
-                        <li><input type="radio" name = q11 data-score="4"> 変状があり観測を行っており、変状が進行している。 </li>
-                        <li><input type="radio" name = q11 data-score="4"> 変状があり観測を行っていないが、明らかに変状が進行している。 </li>
-                    </ul><br>
-                    <label>湧水</label>
-                    <ul>
-                        <li><input type="radio" name = q12 data-score="0"> 表面が乾いている。</li>
-                        <li><input type="radio" name = q12 data-score="1"> 水がしみ出す/草が生えている。</li>
-                        <li><input type="radio" name = q12 data-score="3"> 水が流れ出している。</li>
-                    </ul><br>
+        <div>
+            <div class="category-title">
+                <label>＜基本情報＞</label>
+            </div>
+
+            <fieldset>
+                <legend>石垣番号</legend>
+                <input type="text" id="ishigakiNo" name="ishigakiNo" />
+            </fieldset>
+
+            <fieldset>
+                <legend>地区名</legend>
+                <input type="text" id="chikuName" name="chikuName" />
+            </fieldset>
+
+            <fieldset>
+                <legend>石垣面位置</legend>
+                <label><input type="radio" name="ishigaki_ichi" value="曲輪" /> 曲輪</label>
+                <label><input type="radio" name="ishigaki_ichi" value="天守台" /> 天守台</label>
+                <label><input type="radio" name="ishigaki_ichi" value="櫓台" /> 櫓台</label>
+                <label><input type="radio" name="ishigaki_ichi" value="門台" /> 門台</label>
+                <label><input type="radio" name="ishigaki_ichi" value="堀台" /> 堀台</label>
+                <label><input type="radio" name="ishigaki_ichi" value="虎口" /> 虎口</label>
+                <label><input type="radio" name="ishigaki_ichi" value="通路側壁" /> 通路側壁</label><br />
+                <label><input type="radio" name="ishigaki_ichi" value="溝側壁" /> 溝側壁</label>
+                <label><input type="radio" name="ishigaki_ichi" value="石段" /> 石段</label>
+                <label><input type="radio" name="ishigaki_ichi" value="土留" /> 土留</label><br />
+                <label><input type="radio" name="ishigaki_ichi" value="その他" /> その他</label>
+                <label for="menichiOther">（具体的に）</label>
+                <input type="text" id="menichiOther" name="menichiOther" />
+            </fieldset>
+
+            <!-- 構造規模 -->
+            <fieldset>
+                <legend>構造規模</legend>
+
+                <fieldset>
+                    <legend>地盤</legend>
+
+                    <div>
+                        <span>種別　　：</span>
+                        <label><input type="radio" name="jiban_shubetsu" value="I種" /> I種</label>
+                        <label><input type="radio" name="jiban_shubetsu" value="II種" /> II種</label>
+                        <label><input type="radio" name="jiban_shubetsu" value="III種" /> III種</label>
+                        <label><input type="radio" name="jiban_shubetsu" value="不明" /> 不明</label>
+                    </div>
+
+                    <div>
+                        <span>地盤区分：</span>
+                        <label><input type="radio" name="jiban_kubun" value="岩" /> 岩</label>
+                        <label><input type="radio" name="jiban_kubun" value="地山" /> 地山</label>
+                        <label><input type="radio" name="jiban_kubun" value="堆積層" /> 堆積層</label>
+                        <label><input type="radio" name="jiban_kubun" value="盛土" /> 盛土</label>
+                    </div>
+
+                    <div>
+                        <span>地形　　：</span>
+                        <label><input type="radio" name="jiban_chikei" value="丘陵" /> 丘陵</label>
+                        <label><input type="radio" name="jiban_chikei" value="平地" /> 平地</label>
+                        <label><input type="radio" name="jiban_chikei" value="旧谷地" /> 旧谷地</label>
+                        <label><input type="radio" name="jiban_chikei" value="旧河川" /> 旧河川</label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>造成</legend>
+                    <label><input type="radio" name="zousei" value="旧地形まま" /> 旧地形まま</label>
+                    <label><input type="radio" name="zousei" value="切土部" /> 切土部</label>
+                    <label><input type="radio" name="zousei" value="盛土部" /> 盛土部</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>石垣延長</legend>
+                    <div>
+                        <label for="enchouTenba">天端（m）</label>
+                        <input type="number" step="0.01" id="enchouTenba" name="enchouTenba" />
+                    </div>
+                    <div>
+                        <label for="enchouKatanba">下端（m）</label>
+                        <input type="number" step="0.01" id="enchouKatanba" name="enchouKatanba" />
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>石垣高さ</legend>
+                    <div>
+                        <label for="maxTakasa">最大の高さ（m）</label>
+                        <input type="number" step="0.01" id="maxTakasa" name="maxTakasa" />
+                    </div>
+                    <div>
+                        <span>位置：</span>
+                        <label><input type="radio" name="takasa_ichi" value="左" /> 左</label>
+                        <label><input type="radio" name="takasa_ichi" value="中央" /> 中央</label>
+                        <label><input type="radio" name="takasa_ichi" value="右" /> 右</label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>勾配</legend>
+
+                    <div>
+                        <span>反りの有無　　：</span>
+                        <label><input type="radio" name="sori" value="有" /> 有</label>
+                        <label><input type="radio" name="sori" value="無" /> 無</label>
+                    </div>
+
+                    <div>
+                        <label for="heikinKoubai">反り無の場合　：平均勾配（度）</label>
+                        <input type="number" step="0.1" id="heikinKoubai" name="heikinKoubai" />
+                    </div>
+
+                    <div>
+                        <label for="maxKoubai">反り有の場合　：頂部から約2m間の最大勾配（度）</label>
+                        <input type="number" step="0.1" id="maxKoubai" name="maxKoubai" />
+                    </div>
+
+                    <div>
+                        <span>最大勾配の位置：</span>
+                        <label><input type="radio" name="maxkoubai_ichi" value="隅・左部" /> 隅・左部</label>
+                        <label><input type="radio" name="maxkoubai_ichi" value="左" /> 左</label>
+                        <label><input type="radio" name="maxkoubai_ichi" value="中央" /> 中央</label>
+                        <label><input type="radio" name="maxkoubai_ichi" value="右" /> 右</label>
+                        <label><input type="radio" name="maxkoubai_ichi" value="隅・右部" /> 隅・右部</label>
+                    </div>
+                </fieldset>
+
+                <div>
+                    <label for="menseki">面積（㎡）</label>
+                    <input type="number" step="0.01" id="menseki" name="menseki" />
+                </div>
+            </fieldset>
+
+            <!-- 積み方 -->
+            <fieldset>
+                <legend>積み方</legend>
+
+                <fieldset>
+                    <legend>隅部</legend>
+                    <label><input type="radio" name="tsumikata_sumi" value="算木積み" /> 算木積み</label>
+                    <label><input type="radio" name="tsumikata_sumi" value="非算木積み" /> 非算木積み</label>
+                    <label><input type="radio" name="tsumikata_sumi" value="その他" /> その他</label>
+                    <div>
+                        <label for="tsumikataSumiOther">（具体的に）</label>
+                        <input type="text" id="tsumikataSumiOther" name="tsumikataSumiOther" />
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>平部</legend>
+                    <label><input type="radio" name="tsumikata_hira" value="乱積み" /> 乱積み</label>
+                    <label><input type="radio" name="tsumikata_hira" value="布崩し積み" /> 布崩し積み</label>
+                    <label><input type="radio" name="tsumikata_hira" value="布積み" /> 布積み</label>
+                    <label><input type="radio" name="tsumikata_hira" value="谷積み" /> 谷積み</label>
+                </fieldset>
+            </fieldset>
+
+            <!-- 石材 -->
+            <fieldset>
+                <legend>石材</legend>
+
+                <fieldset>
+                    <legend>形状</legend>
+                    <label><input type="radio" name="sekizai_keijou" value="野面石" /> 野面石</label>
+                    <label><input type="radio" name="sekizai_keijou" value="割石" /> 割石</label>
+                    <label><input type="radio" name="sekizai_keijou" value="切石" /> 切石</label>
+                    <label><input type="radio" name="sekizai_keijou" value="間知石（空積み・練積み）" /> 間知石（空積み・練積み）</label><br />
+                    <label><input type="radio" name="sekizai_keijou" value="その他" /> その他</label>
+                    <div>
+                        <label for="sekizaiKeijouOther">（具体的に）</label>
+                        <input type="text" id="sekizaiKeijouOther" name="sekizaiKeijouOther" />
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>合端加工</legend>
+                    <label><input type="radio" name="aibata" value="なし（自然石まま）" /> なし（自然石まま）</label>
+                    <label><input type="radio" name="aibata" value="粗加工（打込ハギ）" /> 粗加工（打込ハギ）</label>
+                    <label><input type="radio" name="aibata" value="精加工（切込ハギ）" /> 精加工（切込ハギ）</label><br />
+                    <label><input type="radio" name="aibata" value="その他" /> その他</label>
+                    <label for="aibataOther">（具体的に）</label>
+                    <input type="text" id="aibataOther" name="aibataOther" />
+                </fieldset>
+
+                <fieldset>
+                    <legend>岩石種</legend>
+                    <label><input type="radio" name="ganseki" value="花崗岩" /> 花崗岩</label>
+                    <label><input type="radio" name="ganseki" value="安山岩" /> 安山岩</label>
+                    <label><input type="radio" name="ganseki" value="凝灰岩" /> 凝灰岩</label>
+                    <label><input type="radio" name="ganseki" value="砂岩" /> 砂岩</label><br />
+                    <label><input type="radio" name="ganseki" value="その他" /> その他</label>
+                    <label for="gansekiOther">（具体的に）</label>
+                    <input type="text" id="gansekiOther" name="gansekiOther" />
+                </fieldset>
+
+                <fieldset>
+                    <legend>築石控長</legend>
+                    <label><input type="radio" name="tsukiishi_hikae" value="60cm未満" /> 60cm未満</label>
+                    <label><input type="radio" name="tsukiishi_hikae" value="60〜90cm" /> 60〜90cm</label>
+                    <label><input type="radio" name="tsukiishi_hikae" value="90〜120cm" /> 90〜120cm</label>
+                    <label><input type="radio" name="tsukiishi_hikae" value="120〜150cm" /> 120〜150cm</label><br />
+                    <label><input type="radio" name="tsukiishi_hikae" value="150cm以上" /> 150cm以上</label>
+                    <label for="tsukiishiAvg">（平均約 cm）</label>
+                    <input type="number" step="0.1" id="tsukiishiAvg" name="tsukiishiAvg" />
+                </fieldset>
+            </fieldset>
+
+            <!-- 石垣タイプ -->
+            <fieldset>
+                <legend>石垣タイプ</legend>
+                <label><input type="radio" name="ishigakiType" value="非石垣（栗石層＋地山）" /> 非石垣（栗石層＋地山）</label><br />
+                <label><input type="radio" name="ishigakiType" value="非石垣（栗石層＋盛土）" /> 非石垣（栗石層＋盛土）</label><br />
+                <label><input type="radio" name="ishigakiType" value="半石垣（栗石層＋地山）" /> 半石垣（栗石層＋地山）</label><br />
+                <label><input type="radio" name="ishigakiType" value="半石垣（栗石層＋盛土）" /> 半石垣（栗石層＋盛土）</label><br />
+                <label><input type="radio" name="ishigakiType" value="半石垣（突き出しているもの）" /> 半石垣（突き出しているもの）</label><br />
+                <label><input type="radio" name="ishigakiType" value="石垣（栗石層＋地山）" /> 石垣（栗石層＋地山）</label><br />
+                <label><input type="radio" name="ishigakiType" value="石垣（栗石層＋盛土）" /> 石垣（栗石層＋盛土）</label><br />
+                <label><input type="radio" name="ishigakiType" value="石垣（栗石のみ）" /> 石垣（栗石のみ）</label><br />
+                <label><input type="radio" name="ishigakiType" value="栗石なし、盛土のみ" /> 栗石なし、盛土のみ</label><br />
+                <label><input type="radio" name="ishigakiType" value="不明" /> 不明</label>
+            </fieldset>
+
+            <!-- 年代 -->
+            <fieldset>
+                <legend>年代</legend>
+                <div>
+                    <label for="nendai">年代</label>
+                    <input type="text" id="nendai" name="nendai" />
+                    <label><input type="checkbox" name="nendaiFumei" value="不明" /> 不明</label>
+                </div>
+            </fieldset>
+
+            <!-- 被災の履歴 -->
+            <fieldset>
+                <legend>被災の履歴</legend>
+                <label><input type="radio" name="hisai" value="あり" /> あり</label>
+                <label><input type="radio" name="hisai" value="なし" /> なし</label>
+                <label><input type="radio" name="hisai" value="不明" /> 不明</label>
+
+                <div>
+                    <label for="hisaiDetail">→ありの場合は下に具体的に記入</label><br />
+                    <textarea id="hisaiDetail" name="hisaiDetail" rows="4" cols="60"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- 改修の履歴 -->
+            <fieldset>
+                <legend>改修の履歴</legend>
+                <label><input type="radio" name="kaishu" value="あり" /> あり</label>
+                <label><input type="radio" name="kaishu" value="なし" /> なし</label>
+                <label><input type="radio" name="kaishu" value="不明" /> 不明</label>
+
+                <div>
+                    <label for="kaishuDetail">→ありの場合は下に具体的に記入</label><br />
+                    <textarea id="kaishuDetail" name="kaishuDetail" rows="4" cols="60"></textarea>
+                </div>
+            </fieldset>
+
+        </div>
+
+        <div>
+            <div class="category-title">
+                <label>＜予備診断＞</label>
+            </div>
+
+            <div class="category-title-sub">
+                <label>１．基礎点項目</label>
+            </div>
+
+            <!-- a. 地盤 -->
+            <div class="btn-group">
+                <div class="item-title"><label>a. 地盤</label></div>
+
+                <input type="radio" name="kisoten_q1" id="kisoten_q1_choice1" data-score="0">
+                <label for="kisoten_q1_choice1" class="select-btn">① 硬い地盤（Ⅰ種地盤相当）</label>
+
+                <input type="radio" name="kisoten_q1" id="kisoten_q1_choice2" data-score="1">
+                <label for="kisoten_q1_choice2" class="select-btn">② 普通の地盤（Ⅱ種地盤相当）</label>
+
+                <input type="radio" name="kisoten_q1" id="kisoten_q1_choice3" data-score="2">
+                <label for="kisoten_q1_choice3" class="select-btn">③ 軟弱な地盤（Ⅲ種地盤相当）</label>
+
+                <input type="radio" name="kisoten_q1" id="kisoten_q1_choice4" data-score="1">
+                <label for="kisoten_q1_choice4" class="select-btn">④ 不明</label>
+            </div>
+
+            <!-- b. 石垣の形状 -->
+            <div class="sublist-group">
+                <div class="sublist-title"><label>b. 石垣の形状</label></div>
+
+                <!-- ア 石垣タイプ -->
+                <div class="btn-group">
+                    <div class="item-title"><label>ア 石垣タイプ</label></div>
+
+                    <input type="radio" name="kisoten_q2_1" id="kisoten_q2_1_choice1" data-score="0">
+                    <label for="kisoten_q2_1_choice1" class="select-btn">① 非石塁（栗石層＋地山）</label>
+
+                    <input type="radio" name="kisoten_q2_1" id="kisoten_q2_1_choice2" data-score="1">
+                    <label for="kisoten_q2_1_choice2" class="select-btn">② 非石塁（栗石層＋盛土）</label>
+
+                    <input type="radio" name="kisoten_q2_1" id="kisoten_q2_1_choice3" data-score="1">
+                    <label for="kisoten_q2_1_choice3" class="select-btn">③ 半石塁（栗石層＋地山）</label>
+
+                    <input type="radio" name="kisoten_q2_1" id="kisoten_q2_1_choice4" data-score="2">
+                    <label for="kisoten_q2_1_choice4" class="select-btn">④ 半石塁（栗石層＋盛土）</label>
+
+                    <input type="radio" name="kisoten_q2_1" id="kisoten_q2_1_choice5" data-score="3">
+                    <label for="kisoten_q2_1_choice5" class="select-btn">⑤ 半石塁突出形（突出しているもの）</label>
+
+                    <input type="radio" name="kisoten_q2_1" id="kisoten_q2_1_choice6" data-score="2">
+                    <label for="kisoten_q2_1_choice6" class="select-btn">⑥ 石塁（栗石＋盛土）</label>
+
+                    <input type="radio" name="kisoten_q2_1" id="kisoten_q2_1_choice7" data-score="3">
+                    <label for="kisoten_q2_1_choice7" class="select-btn">⑦ 石塁（栗石のみ）</label>
+
+                    <input type="radio" name="kisoten_q2_1" id="kisoten_q2_1_choice8" data-score="3">
+                    <label for="kisoten_q2_1_choice8" class="select-btn">⑧ 栗石なし、盛土のみ</label>
+
+                    <input type="radio" name="kisoten_q2_1" id="kisoten_q2_1_choice9" data-score="3">
+                    <label for="kisoten_q2_1_choice9" class="select-btn">⑨ 不明</label>
+                </div>
+
+                <!-- イ 石垣の高さ、勾配 -->
+                <div class="btn-group">
+                    <div class="item-title"><label>イ 石垣の高さ、勾配</label></div>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice1" data-score="2">
+                    <label for="kisoten_q2_2_choice1" class="select-btn">①-1 高さ２ｍ未満 かつ勾配８５°以上</label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice2" data-score="0">
+                    <label for="kisoten_q2_2_choice2" class="select-btn">①-2 高さ２ｍ未満 かつ勾配８５°以下</label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice3" data-score="2">
+                    <label for="kisoten_q2_2_choice3" class="select-btn">②-1 高さ２ｍ以上４ｍ未満 かつ勾配８５°以下</label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice4" data-score="0">
+                    <label for="kisoten_q2_2_choice4" class="select-btn">②-2 高さ２ｍ以上４ｍ未満 かつ勾配８０°以下</label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice5" data-score="2">
+                    <label for="kisoten_q2_2_choice5" class="select-btn">③-1 高さ４ｍ以上６ｍ未満 かつ勾配８５°以下</label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice6" data-score="1">
+                    <label for="kisoten_q2_2_choice6" class="select-btn">③-2 高さ４ｍ以上６ｍ未満 かつ勾配７３°以下 </label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice7" data-score="0">
+                    <label for="kisoten_q2_2_choice7" class="select-btn">③-3 高さ４ｍ以上６ｍ未満 かつ勾配７０°以下 </label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice8" data-score="2">
+                    <label for="kisoten_q2_2_choice8" class="select-btn">④-1 高さ６ｍ以上１０ｍ未満 かつ勾配８０°以下</label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice9" data-score="1">
+                    <label for="kisoten_q2_2_choice9" class="select-btn">④-2 高さ６ｍ以上１０ｍ未満 かつ勾配７０°以下</label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice10" data-score="0">
+                    <label for="kisoten_q2_2_choice10" class="select-btn">④-3 高さ６ｍ以上１０ｍ未満 かつ勾配６５°以下</label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice11" data-score="2">
+                    <label for="kisoten_q2_2_choice11" class="select-btn">⑤-1 高さ１０ｍ以上１６ｍ未満 かつ勾配７５°以下</label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice12" data-score="1">
+                    <label for="kisoten_q2_2_choice12" class="select-btn">⑤-2 高さ１０ｍ以上１６ｍ未満 かつ勾配７０°以下</label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice13" data-score="0">
+                    <label for="kisoten_q2_2_choice13" class="select-btn">⑤-3 高さ１０ｍ以上１６ｍ未満 かつ勾配６５°以下</label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice14" data-score="2">
+                    <label for="kisoten_q2_2_choice14" class="select-btn">⑥-1 高さ１６ｍ以上 かつ勾配７５°以下</label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice15" data-score="1">
+                    <label for="kisoten_q2_2_choice15" class="select-btn">⑥-2 高さ１６ｍ以上 かつ勾配６５°以下</label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice16" data-score="0">
+                    <label for="kisoten_q2_2_choice16" class="select-btn">⑥-3 高さ１６ｍ以上 かつ勾配６０°以下</label>
+
+                    <input type="radio" name="kisoten_q2_2" id="kisoten_q2_2_choice17" data-score="3">
+                    <label for="kisoten_q2_2_choice17" class="select-btn">⑦ 上記以外</label>
+                </div>
+            </div>
+
+            <!-- ここから未修正 -->
+            <label>c. 過去の履歴</label><br>
+            <label>ア 被災・修理履歴</label>
+            <ul>
+                <li><input type="radio" name = kisoten_q3_1 data-score="0"> 崩れたり変状した記録はない。</li>
+                <li><input type="radio" name = kisoten_q3_1 data-score="3"> ２回以上崩れた記録・痕跡がある。</li>
+                <li><input type="radio" name = kisoten_q3_1 data-score="2"> １回崩れた記録・痕跡ある。</li>
+                <li><input type="radio" name = kisoten_q3_1 data-score="2"> ２回以上変状した記録・痕跡がある。</li>
+                <li><input type="radio" name = kisoten_q3_1 data-score="1"> １回変状した記録・痕跡がある。</li>
+                <li><input type="radio" name = kisoten_q3_1 data-score="3"> 程度は不明だが、２回以上被災した記録・痕跡がある。</li>
+                <li><input type="radio" name = kisoten_q3_1 data-score="2"> 程度は不明だが、１回被災した記録・痕跡がある。</li>
+                <li><input type="radio" name = kisoten_q3_1 data-score="3"> ２回以上積み直しを伴う修理を行った記録・痕跡がある。</li>
+                <li><input type="radio" name = kisoten_q3_1 data-score="2"> １回積み直しを伴う修理を行った記録・痕跡がある。</li>
+                <li><input type="radio" name = kisoten_q3_1 data-score="1"> 積み直しを伴わない修理を行った記録・痕跡がある。</li>
+                <li><input type="radio" name = kisoten_q3_1 data-score="2"> 不明。</li>
+            </ul>
+            <label>イ 修理の方法</label>
+            <ul><li><input type="radio" name = kisoten_q3_2 data-score="0"> 修理にあたり特段の対策はしていない。</li>
+                <li><input type="radio" name = kisoten_q3_2 data-score="-1"> 修理にあたり原因の分析と伝統工法の範囲で改善が図られた。</li>
+                <li><input type="radio" name = kisoten_q3_2 data-score="-2"> 修理にあたり原因の分析と具体的な改良工法がとられた（土壌改良、栗石の粒度改良など、を除く）。</li>
+                <li><input type="radio" name = kisoten_q3_2 data-score="-3"> 修理にあたり原因の分析と構造解析を行い、必要性能を概ね満たす改良、補強を行った。</li>
+                <li><input type="radio" name = kisoten_q3_2 data-score="-1"> 修理にあたり在来仕様にこだわらず現代的な手法を用いて対策がなされた。 </li>
+                <li><input type="radio" name = kisoten_q3_2 data-score="0"> 不明。</li>
+            </ul>
+            <!-- ここまで未修正 -->
+
+        </div>
 
 
-            <input type="submit" value="送信する" id="sousin"></input>
-        </form>
+        <div>
+            <div class="category-title-sub">
+                <label>２．変状点項目</label>
+            </div>
+
+            <!-- a. 築石の変状  -->
+            <div class="sublist-group">
+                <div class="sublist-title"><label>a. 築石の変状</label></div>
+
+                <!-- ア 緩み、築石の目地の開き -->
+                <div class="btn-group">
+                    <div class="item-title"><label>ア 緩み、築石の目地の開き</label></div>
+
+                    <input type="radio" name="henjoten_q1_1" id="henjoten_q1_1_choice1" data-score="0">
+                    <label for="henjoten_q1_1_choice1" class="select-btn">① 見られない。</label>
+
+                    <input type="radio" name="henjoten_q1_1" id="henjoten_q1_1_choice2" data-score="1">
+                    <label for="henjoten_q1_1_choice2" class="select-btn">② 若干の緩み、築石の目地の開きがある。</label>
+
+                    <input type="radio" name="henjoten_q1_1" id="henjoten_q1_1_choice3" data-score="1">
+                    <label for="henjoten_q1_1_choice3" class="select-btn">③ 緩み、築石の目地の開きが随所に見られる。</label>
+
+                    <input type="radio" name="henjoten_q1_1" id="henjoten_q1_1_choice4" data-score="2">
+                    <label for="henjoten_q1_1_choice4" class="select-btn">④ 緩み、築石の目地の開きが著しい。</label>
+                </div>
+
+                <!-- イ 孕み -->
+                <div class="btn-group">
+                    <div class="item-title"><label>イ 孕み</label></div>
+
+                    <input type="radio" name="henjoten_q1_2" id="henjoten_q1_2_choice1" data-score="2">
+                    <label for="henjoten_q1_2_choice1" class="select-btn">① 見られない。</label>
+
+                    <input type="radio" name="henjoten_q1_2" id="henjoten_q1_2_choice2" data-score="0">
+                    <label for="henjoten_q1_2_choice2" class="select-btn">② わずかに孕みがある。</label>
+
+                    <input type="radio" name="henjoten_q1_2" id="henjoten_q1_2_choice3" data-score="2">
+                    <label for="henjoten_q1_2_choice3" class="select-btn">③ 孕みがある（孕みだし指数６未満）。</label>
+
+                    <input type="radio" name="henjoten_q1_2" id="henjoten_q1_2_choice4" data-score="0">
+                    <label for="henjoten_q1_2_choice4" class="select-btn">④ 局所的な孕みが著しい（孕みだし指数６以上）。</label>
+
+                    <input type="radio" name="henjoten_q1_2" id="henjoten_q1_2_choice5" data-score="2">
+                    <label for="henjoten_q1_2_choice5" class="select-btn">⑤ 全体的な孕みが見られる。</label>
+                </div>
+
+                <!-- ウ 割れ、抜け落ち、崩れ -->
+                <div class="btn-group">
+                    <div class="item-title"><label>ウ 割れ、抜け落ち、崩れ</label></div>
+
+                    <input type="radio" name="henjoten_q1_3" id="henjoten_q1_3_choice1" data-score="2">
+                    <label for="henjoten_q1_3_choice1" class="select-btn">① 見られない。</label>
+
+                    <input type="radio" name="henjoten_q1_3" id="henjoten_q1_3_choice2" data-score="0">
+                    <label for="henjoten_q1_3_choice2" class="select-btn">② 築石、角石の割れ、間詰石の抜け落ちが若干見られる。</label>
+
+                    <input type="radio" name="henjoten_q1_3" id="henjoten_q1_3_choice3" data-score="2">
+                    <label for="henjoten_q1_3_choice3" class="select-btn">③ 築石、角石の割れ、間詰石の抜け落ちが随所で見られる。</label>
+
+                    <input type="radio" name="henjoten_q1_3" id="henjoten_q1_3_choice4" data-score="0">
+                    <label for="henjoten_q1_3_choice4" class="select-btn">④ 築石、角石の割れ、間詰石の抜け落ち、築石の崩れが著しい。</label>
+                </div>
+            </div>
+
+            <!-- ここから未修正 -->
+            <label>割れ、抜け落ち、崩れ</label>
+            <ul>
+                <li><input type="radio" name = q8 data-score="0"> 見られない。</li>
+                <li><input type="radio" name = q8 data-score="1"> 築石、角石の割れ、間詰石の抜け落ちが若干見られる。</li>
+                <li><input type="radio" name = q8 data-score="2"> 築石、角石の割れ、間詰石の抜け落ちが随所で見られる。</li>
+                <li><input type="radio" name = q8 data-score="4"> 築石、角石の割れ、間詰石の抜け落ち、築石の崩れが著しい。</li>
+            </ul><br>
+            <label>周辺の変状</label><br>
+            <label>天端または栗石部の沈下、地割れ </label>
+            <ul>
+                <li><input type="radio" name = q9 data-score="0"> 見られない。</li>
+                <li><input type="radio" name = q9 data-score="1"> 天端または栗石部の沈下が見られる。 </li>
+                <li><input type="radio" name = q9 data-score="3"> 天端周辺に地割れがある、地割れが入ったことがある。</li>
+            </ul><br>
+            <label>基礎部の変状</label>
+            <ul>
+                <li><input type="radio" name = q10 data-score="0"> 見られない。</li>
+                <li><input type="radio" name = q10 data-score="3"> 基礎部の変状が見られる。</li>
+            </ul><br>
+            <label>変状の進行状況</label>
+            <ul>
+                <li><input type="radio" name = q11 data-score="0"> 変状がほぼない</li>
+                <li><input type="radio" name = q11 data-score="0"> 変状があり観測を行っており、変化が無い。</li>
+                <li><input type="radio" name = q11 data-score="1"> 変状があり観測を行っていないが、目視で大きな変化が無い。 </li>
+                <li><input type="radio" name = q11 data-score="4"> 変状があり観測を行っており、変状が進行している。 </li>
+                <li><input type="radio" name = q11 data-score="4"> 変状があり観測を行っていないが、明らかに変状が進行している。 </li>
+            </ul><br>
+            <label>湧水</label>
+            <ul>
+                <li><input type="radio" name = q12 data-score="0"> 表面が乾いている。</li>
+                <li><input type="radio" name = q12 data-score="1"> 水がしみ出す/草が生えている。</li>
+                <li><input type="radio" name = q12 data-score="3"> 水が流れ出している。</li>
+            </ul><br>
+            <!-- ここまで未修正 -->
+
+        </div>
+
+        <input type="button" value="診断する" id="sousin"></input>
         <script src="sindan.js"></script>
     </body>
 </html>
-

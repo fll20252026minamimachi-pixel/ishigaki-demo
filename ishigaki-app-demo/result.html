@@ -8,22 +8,22 @@
         <link rel="stylesheet" href="result.css">
     </head>
     <body>
+        <p id="modoru"><a href="index.html">ホームへ</a></p>
         <h1>石垣予備診断結果</h1>
-        <button onclick="location.href = 'index.html'">ホームへ</button>
-        <p id="jiban">地盤:</p>
-        <p id="ishigakitype">石垣タイプ:</p>
-        <p id="koubai">石垣の勾配:</p>
-        <p id="hisai">被災・修復履歴:</p>
-        <p id="shuri">修理の方法:</p>
-        <p id="yurumi">緩み、築石の目地の開き:</p>
-        <p id="harami">孕み:</p>
-        <p id="ware">割れ、抜け落ち、崩れ:</p>
-        <p id="tinka">天端または栗石部の沈下、地割れ:</p>
-        <p id="kisobu">基礎部の変状:</p>
-        <p id="shinkou">変状の進行状況:</p>
-        <p id="wakimizu">湧水:</p>
-        <p id="kisototal">基礎項目合計:</p>
-        <p id="henjototal">変状項目合計:</p>
-        <p id="total">合計:</p>
+
+        <!-- ここにJSで表を挿入します -->
+        <div class="groupTitle">＜基本情報＞</div>
+        <div id="kihonArea"></div>
+
+        <div class="groupTitle">＜予備診断＞</div>
+        <div class="tableTitle">１．基礎点項目</div>
+        <div id="kisotenArea"></div>
+
+        <div class="tableTitle">２．変状点項目</div>
+        <div id="henjotenArea"></div>
+
+        <div class="tableTitle">３．判定</div>
+        <div id="hanteiArea"></div>
+
         <script src="result.js"></script>
     </body>

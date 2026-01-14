@@ -1,52 +1,207 @@
-const jiban = document.getElementById('jiban');
-const ishigakitype = document.getElementById('ishigakitype');
-const koubai = document.getElementById('koubai');
-const hisai = document.getElementById('hisai');
-const shuri = document.getElementById('shuri');
-const yurumi = document.getElementById('yurumi');
-const harami = document.getElementById('harami');
-const ware = document.getElementById('ware');
-const tinka = document.getElementById('tinka');
-const kisobu = document.getElementById('kisobu');
-const shinkou = document.getElementById('shinkou');
-const wakimizu = document.getElementById('wakimizu');
+// 画面ロード時
+document.addEventListener("DOMContentLoaded", () => {
+    // 基礎点項目
+    kihonjohoTable("kihonArea", "kihonjoho");
 
-const kisototal = document.getElementById('kisototal'); 
-const henjototal = document.getElementById('henjototal'); 
-const goukei = document.getElementById('total');
+    // 基礎点項目
+    yobishindanTable("kisotenArea", "kisotenkomoku");
 
-const jibanq1 = localStorage.getItem('q1data');
-const ishigakitypeq2 = localStorage.getItem('q2data');
-const koubaiq3 = localStorage.getItem('q3data');
-const hisaiq4 = localStorage.getItem('q4data');
-const shuriq5 = localStorage.getItem('q5data');
-const yurumiq6 = localStorage.getItem('q6data');
-const haramiq7 = localStorage.getItem('q7data');
-const wareq8 = localStorage.getItem('q8data');
-const tinkaq9 = localStorage.getItem('q9data');
-const kisobuq10 = localStorage.getItem('q10data');
-const shinkouq11 = localStorage.getItem('q11data');
-const wakimizuq12 = localStorage.getItem('q12data');
+    // 変状点項目
+    yobishindanTable("henjotenArea", "henjotenkomoku");
 
+    // 判定
+    hanteiTable("hanteiArea", "hantei");
+});
 
-const goukeiqq = localStorage.getItem('totaldata');
-const kisoqq = localStorage.getItem('kisodata');
-const henjoqq = localStorage.getItem('henjodata');
+// 予備診断結果のテーブル表示
+function yobishindanTable(tableArea, sessionStrageKey) {
+  const area = document.getElementById(tableArea);
 
+  // SessionStorageから取得（キー名は必要に応じて変更）
+  const raw = sessionStorage.getItem(sessionStrageKey);
 
-jiban.textContent = "地盤:" + jibanq1;
-ishigakitype.textContent = "石垣タイプ:" + ishigakitypeq2;
-koubai.textContent = "石垣の勾配:" + koubaiq3;
-hisai.textContent = "被災・修復履歴:" + hisaiq4;
-shuri.textContent = "修理の方法:" + shuriq5;
-yurumi.textContent = "緩み、築石の目地の開き:" + yurumiq6;
-harami.textContent = "孕み:" + haramiq7;
-ware.textContent = "割れ、抜け落ち、崩れ:" + wareq8;
-tinka.textContent = "天端または栗石部の沈下、地割れ:" + tinkaq9;
-kisobu.textContent = "基礎部の変状:" + kisobuq10;
-shinkou.textContent = "変状の進行状況:" + shinkouq11;
-wakimizu.textContent = "湧水:" + wakimizuq12;
+  if (!raw) {
+    area.textContent = `SessionStorage に「${sessionStrageKey}」が見つかりません。`;
+    return;
+  }
 
-kisototal.textContent = "基礎項目合計:" + kisoqq;
-henjototal.textContent = "変状項目合計:" + henjoqq;
-goukei.textContent = "合計:" + goukeiqq;
+  let data;
+  try {
+    data = JSON.parse(raw);
+  } catch (e) {
+    area.textContent = "SessionStorage のJSONが壊れています。";
+    return;
+  }
+
+  const itemObj = data.items ?? "";
+  const totalPoint = data["合計"] ?? "";
+
+  // テーブル生成
+  const table = document.createElement("table");
+  table.className = "resultTable";
+
+  // ヘッダ（「診断項目」は2列結合）
+  table.appendChild(makeTr([
+    makeTh("診断項目", { colSpan: 2, className: "head" }),
+    makeTh("評点", { className: "head point" }),
+    makeTh("特記事項", { className: "head note" }),
+  ]));
+
+  Object.entries(itemObj).forEach(([label, value]) => {
+    // valueが配列 → 親行 + 子行群
+    if (Array.isArray(value)) {
+      // 親（カテゴリ）行：labelだけ出して、他は空
+      table.appendChild(makeTr([
+        makeTd(label, { colSpan: 4, className: "label category" }),
+      ]));
+
+      // 子要素（[{ "ア 石垣タイプ": {...}}, {...}]）を展開
+      value.forEach((childObj) => {
+        const [childLabel, childVal] = Object.entries(childObj)[0] ?? ["", {}];
+        table.appendChild(makeTr([
+          makeTd(childLabel, { className: "label sub" }),
+          makeTd(childVal?.text ?? "", { className: "text" }),
+          makeTd(childVal?.point ?? "", { className: "point" }),
+          makeTd(childVal?.note ?? "", { className: "note" }),
+        ]));
+      });
+
+    // valueがオブジェクト → そのまま1行
+    } else if (value && typeof value === "object") {
+      table.appendChild(makeTr([
+        makeTd(label, { className: "label single" }),
+        makeTd(value.text ?? "", { className: "text" }),
+        makeTd(value.point ?? "", { className: "point" }),
+        makeTd(value.note ?? "", { className: "note" }),
+      ]));
+
+    // 想定外（文字列など）も一応表示
+    } else {
+      table.appendChild(makeTr([
+        makeTd(label, { className: "label" }),
+        makeTd(String(value ?? ""), { className: "text" }),
+        makeTd("", { className: "point" }),
+        makeTd("", { className: "note" }),
+      ]));
+    }
+  });
+
+  // 合計行（pointはSessionStorageの値をそのまま表示：計算しない）
+  table.appendChild(makeTr([
+    makeTd("合計", { colSpan: 2, className: "totalLabel" }),
+    makeTd(totalPoint, { className: "totalPoint" }),
+    makeTd("", { className: "totalNote" }),
+  ]));
+
+  area.innerHTML = "";
+  area.appendChild(table);
+}
+
+function hanteiTable(tableArea, sessionStrageKey) {
+    const area = document.getElementById(tableArea);
+
+    // SessionStorageから取得（キー名は必要に応じて変更）
+    const data = sessionStorage.getItem(sessionStrageKey);
+
+    if (!data) {
+        area.textContent = `SessionStorage に「${sessionStrageKey}」が見つかりません。`;
+        return;
+    }
+
+    // テーブル生成
+    const table = document.createElement("table");
+    table.className = "resultTable";
+
+    // ヘッダ（「診断項目」は2列結合）
+    table.appendChild(makeTr([
+        makeTd(data, { className: "label" })
+    ]));
+
+    area.innerHTML = "";
+    area.appendChild(table);
+}
+
+function makeTr(cells) {
+  const tr = document.createElement("tr");
+  cells.forEach(c => tr.appendChild(c));
+  return tr;
+}
+
+function makeTh(text, opts = {}) {
+  const th = document.createElement("th");
+  th.textContent = text;
+  applyOpts(th, opts);
+  return th;
+}
+
+function makeTd(text, opts = {}) {
+  const td = document.createElement("td");
+  td.textContent = text;
+  applyOpts(td, opts);
+  return td;
+}
+
+function applyOpts(el, opts) {
+  if (opts.className) el.className = opts.className;
+  if (opts.colSpan) el.colSpan = opts.colSpan;
+}
+
+function kihonjohoTable(tableArea, sessionStrageKey) {
+  const area = document.getElementById(tableArea);
+
+  // SessionStorageから取得（キー名は必要に応じて変更）
+  const raw = sessionStorage.getItem(sessionStrageKey);
+
+  if (!raw) {
+    area.textContent = `SessionStorage に「${sessionStrageKey}」が見つかりません。`;
+    return;
+  }
+
+  let data;
+  try {
+    data = JSON.parse(raw);
+  } catch (e) {
+    area.textContent = "SessionStorage のJSONが壊れています。";
+    return;
+  }
+
+  // テーブル生成
+  const table = document.createElement("table");
+  table.className = "resultTable";
+
+  Object.entries(data).forEach(([label, value]) => {
+    // valueが配列 → 親行 + 子行群
+    if (Array.isArray(value)) {
+      // 親（カテゴリ）行：labelだけ出して、他は空
+      table.appendChild(makeTr([
+        makeTd(label, { colSpan: 4, className: "label category" }),
+      ]));
+
+      // 子要素（[{ "ア 石垣タイプ": {...}}, {...}]）を展開
+      value.forEach((childObj) => {
+        const [childLabel, childVal] = Object.entries(childObj)[0] ?? ["", {}];
+        table.appendChild(makeTr([
+          makeTd(childLabel, { className: "label sub" }),
+          makeTd(childVal?.text ?? "", { className: "text" }),
+        ]));
+      });
+
+    // valueがオブジェクト → そのまま1行
+    } else if (value && typeof value === "object") {
+      table.appendChild(makeTr([
+        makeTd(label, { className: "label single" }),
+        makeTd(value.text ?? "", { className: "text" }),
+      ]));
+
+    // 想定外（文字列など）も一応表示
+    } else {
+      table.appendChild(makeTr([
+        makeTd(label, { className: "label" }),
+        makeTd(String(value ?? ""), { className: "text" }),
+      ]));
+    }
+  });
+
+  area.innerHTML = "";
+  area.appendChild(table);
+}
