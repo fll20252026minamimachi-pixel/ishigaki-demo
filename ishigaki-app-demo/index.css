@@ -1,0 +1,137 @@
+/* ===== Modern simple landing (index.html専用でも汎用でもOK) ===== */
+
+/* 1) ベース */
+:root{
+  --bg1: #0b1020;         /* 背景(濃) */
+  --bg2: #101a33;         /* 背景(薄) */
+  --card: rgba(255,255,255,.08);
+  --card-border: rgba(255,255,255,.14);
+
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.72);
+
+  --primary: #4f7cff;     /* メインボタン色 */
+  --primary-hover: #3c6df6;
+
+  --ring: rgba(79,124,255,.45);
+  --shadow: 0 18px 40px rgba(0,0,0,.35);
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  color: var(--text);
+
+  /* 背景（グラデ＋ほんのり模様） */
+  background:
+    radial-gradient(900px 420px at 20% 10%, rgba(79,124,255,.25), transparent 60%),
+    radial-gradient(700px 360px at 85% 25%, rgba(255,255,255,.10), transparent 55%),
+    linear-gradient(160deg, var(--bg1), var(--bg2));
+  
+  /* 中央寄せ・余白 */
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 28px 16px;
+}
+
+/* 2) 画面の“カード”っぽさ（body直下要素をまとめて見せる） */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,.06), transparent 55%),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,.04), transparent 55%);
+  opacity: .7;
+}
+
+h1{
+  margin: 0 0 18px;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: .02em;
+  line-height: 1.15;
+  text-align: center;
+
+  /* ほんのり立体感 */
+  text-shadow: 0 10px 26px rgba(0,0,0,.35);
+}
+
+/* h1 + ボタン2つ だけなので、ボタン群を綺麗に揃える */
+button{
+  appearance: none;
+  border: 1px solid var(--card-border);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+
+  width: min(420px, 92vw);
+  padding: 14px 16px;
+  border-radius: 14px;
+
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: .02em;
+
+  box-shadow: 0 10px 22px rgba(0,0,0,.18);
+  cursor: pointer;
+
+  transition: transform .12s ease, background-color .12s ease, border-color .12s ease, box-shadow .12s ease;
+}
+
+/* ボタン間の余白（2つ想定） */
+button + button{
+  margin-top: 12px;
+}
+
+/* 3) メインボタン（1つ目） */
+button:first-of-type{
+  background: linear-gradient(180deg, rgba(79,124,255,1), rgba(79,124,255,.82));
+  border-color: rgba(79,124,255,.85);
+  box-shadow: var(--shadow);
+}
+
+button:first-of-type:hover{
+  background: linear-gradient(180deg, var(--primary-hover), rgba(60,109,246,.86));
+  transform: translateY(-2px);
+}
+
+button:first-of-type:active{
+  transform: translateY(0px) scale(.99);
+}
+
+/* 4) サブボタン（2つ目） */
+button:nth-of-type(2){
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.18);
+  color: var(--muted);
+}
+
+button:nth-of-type(2):hover{
+  background: rgba(255,255,255,.10);
+  transform: translateY(-1px);
+  color: var(--text);
+}
+
+button:nth-of-type(2):active{
+  transform: translateY(0px) scale(.995);
+}
+
+/* 5) フォーカス（キーボード操作で分かりやすく） */
+button:focus{ outline: none; }
+button:focus-visible{
+  box-shadow: 0 0 0 4px var(--ring), 0 10px 22px rgba(0,0,0,.18);
+}
+
+/* 6) モーションが苦手な人向け */
+@media (prefers-reduced-motion: reduce){
+  button{ transition: none; }
+}
+
+/* 7) 画面幅が狭いとき */
+@media (max-width: 420px){
+  button{ font-size: 15px; padding: 13px 14px; }
+}
