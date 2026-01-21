@@ -109,7 +109,7 @@ function kisotenData() {
     const totalPoint =
       kisoten_q1.point +
       kisoten_q2_1.point +
-      kisoten_q2_2.point;
+      kisoten_q2_2.point +
       kisoten_q3_1.point +
       kisoten_q3_2.point;
 
@@ -163,7 +163,7 @@ function henjotenData() {
     const totalPoint =
         henjoten_q1_1.point +
         henjoten_q1_2.point +
-        henjoten_q1_3.point;
+        henjoten_q1_3.point +
         henjoten_q2_1.point +
         henjoten_q2_2.point +
         henjoten_q3.point +
@@ -273,4 +273,5 @@ function kihonjohoData() {
         "改修の履歴": { "text": kaishuSaved }
     };
 }
+
 
