@@ -208,14 +208,11 @@ function kihonjohoTable(tableArea, sessionStrageKey) {
 
 // pdfをダウンロードしようとしたのですがうまくできなかったので教えてほしいです。一応できはします。
 // pdfでダウンロードできるようにする
- const thepdf = document.getElementById('thepdf');
- 
-
-
- thepdf.addEventListener("click", async () => {
+const thepdf = document.getElementById('thepdf');
+thepdf.addEventListener("click", async () => {
     
-    const pdfarea = document.getElementById("pdfarea");
-    pdfarea.classList.add("pdf-export");
+  const pdfarea = document.getElementById("pdfarea");
+  pdfarea.classList.add("pdf-export");
 
   const canvas = await html2canvas(pdfarea, {
     scale: 2,
@@ -252,6 +249,4 @@ function kihonjohoTable(tableArea, sessionStrageKey) {
   }
 
   pdf.save("ishigaki_capture.pdf");
- });
-
-
+});

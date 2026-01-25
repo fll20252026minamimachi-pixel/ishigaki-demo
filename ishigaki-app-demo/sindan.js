@@ -273,5 +273,3 @@ function kihonjohoData() {
         "改修の履歴": { "text": kaishuSaved }
     };
 }
-
-
