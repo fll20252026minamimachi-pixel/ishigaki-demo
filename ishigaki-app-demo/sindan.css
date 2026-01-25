@@ -105,6 +105,22 @@ body > div{
   margin: 0 auto 18px;
 }
 
+#ishigakiNo{
+  width: min(100%);
+}
+
+#chikuName{
+  width: min(100%);
+}
+
+.leftoftext{
+  margin-right: 0px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
 /* 見出し帯：＜基本情報＞ ＜予備診断＞ */
 .category-title{
   position: relative;
@@ -192,9 +208,8 @@ fieldset > div{
 input[type="text"],
 input[type="number"],
 textarea{
-  width: min(10%);
+  width: 100px;
   padding: 10px 12px;
-  border-radius: 12px;
   border: 1px solid rgba(255,255,255,.18);
   background: rgba(0,0,0,.18);
   color: var(--text);
@@ -378,5 +393,5 @@ li{
 @media (max-width: 520px){
   fieldset{ padding: 12px; }
   .select-btn{ padding: 12px 10px; }
-  input[type="text"], input[type="number"], textarea{ width: 20%; }
+  input[type="text"], input[type="number"], textarea{ width: min(100%); }
 }
