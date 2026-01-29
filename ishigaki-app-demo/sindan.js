@@ -59,7 +59,7 @@ document.getElementById("sousin").addEventListener("click", () => {
         // 判定
         const kisopoint = kisodata["合計"];
         const henjopoint = henjodata["合計"];
-        const fourkomoku = henjodata["4項目"];
+        const fourkomoku = henjodata["4点項目"];
         let hanteidata = "";
         if (kisopoint <= 4) {
             if (henjopoint <= 3) {
@@ -223,27 +223,43 @@ function kihonjohoData() {
         menichi === "その他" ? `その他（${menichiOther}）` : menichi;
 
     // 地盤
-    const jiban = `${getRadioValue("jiban_shubetsu")}、${getRadioValue("jiban_kubun")}、${getRadioValue("jiban_chikei")}`;
+    const jiban = [getRadioValue("jiban_shubetsu"), getRadioValue("jiban_kubun"), getRadioValue("jiban_chikei")]
+        .filter(s => s && s.trim() !== "")
+        .join(" ／ ");
 
     // 石垣延長
-    const ishigaki_encho = `天端 ${getValueById("enchouTenba")}m、下端 ${getValueById("enchouKatanba")}m`;
+    const tentan = getValueById("enchouTenba");
+    const katan = getValueById("enchouKatanba");
+    const ishigaki_encho = [tentan ? `天端 ${tentan}m` : "", katan ? `下端 ${katan}m` : ""]
+        .filter(s => s && s.trim() !== "")
+        .join(" ／ ");
 
     // 石垣高さ
-    const ishigaki_takasa = `最大の高さ ${getValueById("maxTakasa")}m (${getRadioValue("takasa_ichi")})`;
+    const maxtakasa = getValueById("maxTakasa");
+    const ishigaki_takasa = maxtakasa ? `最大の高さ ${maxtakasa}m（${getRadioValue("takasa_ichi")}）` : "";
 
     // 勾配
     const umu = getRadioValue("sori");
-    const koubai = (umu === "有")
-        ? `反りの有無（${umu}）、頂部から約２ｍ間の最大勾配 ${getValueById("maxKoubai")}度(${getRadioValue("maxkoubai_ichi")})`
-        : `反りの有無（${umu}）、平均勾配 ${getValueById("heikinKoubai")}度`;
+    let koubai = "";
+    if (umu === "有") {
+        koubai = `反りの有無（${umu}） ／ 頂部から約２ｍ間の最大勾配 ${getValueById("maxKoubai")}度（${getRadioValue("maxkoubai_ichi")}）`;
+    }
+    if (umu === "無") {
+        koubai = `反りの有無（${umu}） ／ 平均勾配 ${getValueById("heikinKoubai")}度`;
+    }
+
+    // 面積
+    const menseki = getValueById("menseki") ? `${getValueById("menseki")}m` : "";
 
     // 築石控長
-    const tsukiishi = `${getRadioValue("tsukiishi_hikae")}(平均約${getValueById("tsukiishiAvg")}cm)`;
+    const hikaestr = getRadioValue("tsukiishi_hikae");
+    const hikaeavg = getValueById("tsukiishiAvg");
+    const tsukiishi = `${getRadioValue("tsukiishi_hikae")}` + hikaeavg ? `（平均約${getValueById("tsukiishiAvg")}cm）` : "";
 
     // 年代：不明チェックがあれば "不明"
-    const nendaiFumeiChecked =
-        document.querySelector('input[type="checkbox"][name="nendaiFumei"]')?.checked ?? false;
-    const nendai = nendaiFumeiChecked ? "不明" : `${getValueById("nendai")}年代`;
+    const nendaistr = getValueById("nendai");
+    const nendaiFumeiChecked = document.querySelector('input[type="checkbox"][name="nendaiFumei"]')?.checked ?? false;
+    const nendai = nendaiFumeiChecked ? "不明" : nendaistr ? `${getValueById("nendai")}年代` : "";
 
     // 被災の履歴：ありの場合は詳細も保持
     const hisai = getRadioValue("hisai");
@@ -258,6 +274,31 @@ function kihonjohoData() {
     const kaishuSaved = (kaishu === "あり")
         ? `${kaishu} 詳細：${kaishuDetail}`
         : `${kaishu}`;
+    
+    // 石垣上
+    // 建造物
+    const kenzobt = getRadioValue("ishigaki_ue_kenzo") ? `建造物（${getRadioValue("ishigaki_ue_kenzo")}）` : "";
+    // 立ち入り
+    let tachi_ue = "";
+    if (getRadioValue("ishigaki_ue_tachi_1")) tachi_ue += `（${getRadioValue("ishigaki_ue_tachi_1")}）`;
+    if (getRadioValue("ishigaki_ue_tachi_2")) tachi_ue += `（${getRadioValue("ishigaki_ue_tachi_2")}）`;
+    if (getRadioValue("ishigaki_ue_tachi_3")) tachi_ue += `（${getRadioValue("ishigaki_ue_tachi_3")}）`;
+    tachi_ue = tachi_ue ? `立ち入り${tachi_ue}` : "";
+    const ishigaki_ue = [kenzobt, tachi_ue]
+        .filter(s => s && s.trim() !== "")
+        .join(" ／ ");
+
+    // 石垣下
+    const ishigakishitachokka = getRadioValue("ishigaki_shita_type") ?? "";
+    // 立ち入り
+    let tachi_shita = "";
+    if (getRadioValue("ishigaki_shita_tachi_1")) tachi_shita += `（${getRadioValue("ishigaki_shita_tachi_1")}）`;
+    if (getRadioValue("ishigaki_shita_tachi_2")) tachi_shita += `（${getRadioValue("ishigaki_shita_tachi_2")}）`;
+    if (getRadioValue("ishigaki_shita_tachi_3")) tachi_shita += `（${getRadioValue("ishigaki_shita_tachi_3")}）`;
+    tachi_shita = tachi_shita ? `立ち入り${tachi_shita}` : "";
+    const ishigaki_shita = [ishigakishitachokka, tachi_shita]
+        .filter(s => s && s.trim() !== "")
+        .join(" ／ ");
 
     return {
         "石垣番号": { "text": getValueById("ishigakiNo") },
@@ -269,7 +310,7 @@ function kihonjohoData() {
             { "石垣延長": { "text": ishigaki_encho } },
             { "石垣高さ": { "text": ishigaki_takasa } },
             { "勾配": { "text": koubai } },
-            { "面積(㎡)": { "text": getValueById("menseki") } }
+            { "面積": { "text": menseki } }
         ],
         "積み方": [
             { "隅部": { "text": getRadioValue("tsumikata_sumi") } },
@@ -284,6 +325,10 @@ function kihonjohoData() {
         "石垣タイプ": { "text": getRadioValue("ishigakiType") },
         "年代": { "text": nendai },
         "被災の履歴": { "text": hisaiSaved },
-        "修理の履歴": { "text": kaishuSaved }
+        "修理の履歴": { "text": kaishuSaved },
+        "用途区分": [
+            { "石垣上": { "text": ishigaki_ue } },
+            { "石垣下": { "text": ishigaki_shita } }
+        ]
     };
 }
