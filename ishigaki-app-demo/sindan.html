@@ -91,11 +91,39 @@
                     <legend>石垣延長</legend>
                     <div>
                         <label for="enchouTenba" class="leftoftext">天端(m)</label>
-                        <input type="number" step="0.01" id="enchouTenba" name="enchouTenba" />
+                        <input
+                            type="text"
+                            class="num"
+                            id="enchouTenba"
+                            name="enchouTenba"
+                            inputmode="numeric"
+                            data-digits="6"
+                            data-min="0"
+                            data-max="999999"
+                            data-allow-negative="false"
+                            data-allow-decimal="true"
+                            data-decimals="1"
+                            data-grouping="true"
+                            placeholder=""
+                        />
                     </div>
                     <div>
                         <label for="enchouKatanba" class="leftoftext">下端(m)</label>
-                        <input type="number" step="0.01" id="enchouKatanba" name="enchouKatanba" />
+                        <input
+                            type="text"
+                            class="num"
+                            id="enchouKatanba"
+                            name="enchouKatanba"
+                            inputmode="numeric"
+                            data-digits="6"
+                            data-min="0"
+                            data-max="999999"
+                            data-allow-negative="false"
+                            data-allow-decimal="true"
+                            data-decimals="1"
+                            data-grouping="true"
+                            placeholder=""
+                        />
                     </div>
                 </fieldset>
 
@@ -103,7 +131,21 @@
                     <legend>石垣高さ</legend>
                     <div>
                         <label for="maxTakasa" class="leftoftext">最大の高さ(m)</label>
-                        <input type="number" step="0.01" id="maxTakasa" name="maxTakasa" />
+                        <input
+                            type="text"
+                            class="num"
+                            id="maxTakasa"
+                            name="maxTakasa"
+                            inputmode="numeric"
+                            data-digits="6"
+                            data-min="0"
+                            data-max="999999"
+                            data-allow-negative="false"
+                            data-allow-decimal="true"
+                            data-decimals="1"
+                            data-grouping="true"
+                            placeholder=""
+                        />
                     </div>
                     <div>
                         <span>位置：</span>
@@ -124,12 +166,40 @@
 
                     <div>
                         <label for="heikinKoubai" class="leftoftext">反り無の場合　：</label><span class="nowrap"><label class="leftoftext">平均勾配(度)</label></span>
-                        <input type="number" step="0.1" id="heikinKoubai" name="heikinKoubai" />
+                        <input
+                            type="text"
+                            class="num"
+                            id="heikinKoubai"
+                            name="heikinKoubai"
+                            inputmode="numeric"
+                            data-digits="3"
+                            data-min="0"
+                            data-max="360"
+                            data-allow-negative="false"
+                            data-allow-decimal="false"
+                            data-decimals="0"
+                            data-grouping="true"
+                            placeholder=""
+                        />
                     </div>
 
                     <div>
                         <label for="maxKoubai" class="leftoftext">反り有の場合　：</label><span class="nowrap"><label class="leftoftext">頂部から約2m間の最大勾配(度)</label></span>
-                        <input type="number" step="0.1" id="maxKoubai" name="maxKoubai" />
+                        <input
+                            type="text"
+                            class="num"
+                            id="maxKoubai"
+                            name="maxKoubai"
+                            inputmode="numeric"
+                            data-digits="3"
+                            data-min="0"
+                            data-max="360"
+                            data-allow-negative="false"
+                            data-allow-decimal="false"
+                            data-decimals="0"
+                            data-grouping="true"
+                            placeholder=""
+                        />
                     </div>
 
                     <div>
@@ -142,7 +212,21 @@
                     </div>
                     <div>
                         <label for="menseki" class="leftoftext">面積(㎡)</label>
-                        <input type="number" step="0.01" id="menseki" name="menseki" />
+                        <input
+                            type="text"
+                            class="num"
+                            id="menseki"
+                            name="menseki"
+                            inputmode="numeric"
+                            data-digits="6"
+                            data-min="0"
+                            data-max="999999"
+                            data-allow-negative="false"
+                            data-allow-decimal="false"
+                            data-decimals="0"
+                            data-grouping="true"
+                            placeholder=""
+                        />
                     </div>
                 </fieldset>
             </fieldset>
@@ -206,7 +290,21 @@
                     <span class="nowrap leftoftext"><label class="leftoftext"><input type="radio" name="tsukiishi_hikae" value="150cm以上" />150cm以上</label></span>
                     <div>
                         <label for="tsukiishiAvg" class="leftoftext">(平均約 cm)</label>
-                        <input type="number" step="0.1" id="tsukiishiAvg" name="tsukiishiAvg" />
+                        <input
+                            type="text"
+                            class="num"
+                            id="tsukiishiAvg"
+                            name="tsukiishiAvg"
+                            inputmode="numeric"
+                            data-digits="4"
+                            data-min="0"
+                            data-max="9999"
+                            data-allow-negative="false"
+                            data-allow-decimal="false"
+                            data-decimals="0"
+                            data-grouping="true"
+                            placeholder=""
+                        />
                     </div>
                 </fieldset>
             </fieldset>
@@ -629,5 +727,6 @@
 
         <input type="button" value="診断する" id="sousin"></input>
         <script src="sindan.js"></script>
+        <script src="sindan_input.js"></script>
     </body>
 </html>
