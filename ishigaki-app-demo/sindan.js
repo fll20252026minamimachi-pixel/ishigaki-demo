@@ -235,8 +235,13 @@ function kihonjohoData() {
         .join(" ／ ");
 
     // 石垣高さ
-    const maxtakasa = getValueById("maxTakasa");
-    const ishigaki_takasa = maxtakasa ? `最大の高さ ${maxtakasa}m（${getRadioValue("takasa_ichi")}）` : "";
+    let ishigaki_takasa = "";
+    if (getValueById("maxTakasa")) {
+        ishigaki_takasa += `最大の高さ ${getValueById("maxTakasa")}m`;
+        if (getRadioValue("takasa_ichi")) {
+            ishigaki_takasa += `（${getRadioValue("takasa_ichi")}）`;
+        }
+    }
 
     // 勾配
     const umu = getRadioValue("sori");
