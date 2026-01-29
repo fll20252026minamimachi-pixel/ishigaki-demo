@@ -284,6 +284,6 @@ function kihonjohoData() {
         "石垣タイプ": { "text": getRadioValue("ishigakiType") },
         "年代": { "text": nendai },
         "被災の履歴": { "text": hisaiSaved },
-        "改修の履歴": { "text": kaishuSaved }
+        "修理の履歴": { "text": kaishuSaved }
     };
 }
