@@ -372,7 +372,7 @@ const toDisplayValue = (v) => {
 
   // 左列は固定、右列は残りを使う（誤差対策で 0.8mm 引く）
   const w0 = 55;
-  const w1 = Math.max(60, usableW - w0 - 1.2);
+  const w1 = Math.max(60, usableW - w0);
 
   pdf.autoTable({
     startY: cursorY,
