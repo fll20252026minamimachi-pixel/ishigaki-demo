@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-
+/*全体的な雰囲気を予備診断のほうに合わせました*/
 h1 {
   color: rgb(207, 207, 207);
   background-color: rgb(38, 38, 38);
@@ -13,6 +13,7 @@ h1 {
   margin: 0;
 }
 h2 {
+  color: white;
     margin: 30px 0 45px;
     font-size: 26.5px;
 }
@@ -29,6 +30,10 @@ body {
   font-size: 16px;
   margin: 0;
   -webkit-text-size-adjust: 100%;
+  background:
+    radial-gradient(900px 420px at 20% 10%, rgba(79,124,255,.25), transparent 60%),
+    radial-gradient(700px 360px at 85% 25%, rgba(255,255,255,.10), transparent 55%),
+    linear-gradient(160deg, #1a264c, #101a33);
 }
 .nav ul {
     margin: 0;
@@ -85,9 +90,14 @@ body {
     text-decoration: none;
 }
 p {
+   color: white;
     margin: 10px 0 20px;
   font-size: 18px;
 }
+#koubai-shasin{
+  color: white;
+}
+
 .e{
   text-align: center;
 }
@@ -130,7 +140,7 @@ ul button{
   color: white;
 }
 header {
-  background-color: black;
+  background-color: rgb(0, 0, 0);
 }
 
 @media (max-width: 600px) {
@@ -167,6 +177,7 @@ header {
   margin: 0 auto 20px;  /* 中央に配置＋下に少し余白 */
   }
 }
+
 
 
 
