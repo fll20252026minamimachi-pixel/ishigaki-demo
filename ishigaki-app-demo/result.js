@@ -190,7 +190,7 @@ function kihonjohoTable(tableArea, sessionStrageKey) {
       value.forEach((childObj) => {
         const [childLabel, childVal] = Object.entries(childObj)[0] ?? ["", {}];
         table.appendChild(makeTr([
-          makeTd(childLabel, { className: "label sub" }),
+          makeTd("- " + childLabel, { className: "label sub" }),
           makeTd(childVal?.text ?? "", { className: "text" }),
         ]));
       });

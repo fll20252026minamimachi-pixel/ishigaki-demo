@@ -29,19 +29,19 @@
 
             <fieldset>
                 <legend>石垣面位置</legend>
-                <span class="nowrap"><label><input type="radio" name="ishigaki_ichi" value="曲輪" />曲輪</label></span>
-                <span class="nowrap"><label><input type="radio" name="ishigaki_ichi" value="天守台" />天守台</label></span>
-                <span class="nowrap"><label><input type="radio" name="ishigaki_ichi" value="櫓台" />櫓台</label></span>
-                <span class="nowrap"><label><input type="radio" name="ishigaki_ichi" value="門台" />門台</label></span>
-                <span class="nowrap"><label><input type="radio" name="ishigaki_ichi" value="塀台" />塀台</label></span>
-                <span class="nowrap"><label><input type="radio" name="ishigaki_ichi" value="虎口" />虎口</label></span>
-                <span class="nowrap"><label><input type="radio" name="ishigaki_ichi" value="通路側壁" />通路側壁</label></span>
-                <span class="nowrap"><label><input type="radio" name="ishigaki_ichi" value="濠側壁" />濠側壁</label></span>
-                <span class="nowrap"><label><input type="radio" name="ishigaki_ichi" value="石段" />石段</label></span>
-                <span class="nowrap"><label><input type="radio" name="ishigaki_ichi" value="土留" />土留</label></span>
+                <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ichi" value="曲輪" />曲輪</label></span>
+                <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ichi" value="天守台" />天守台</label></span>
+                <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ichi" value="櫓台" />櫓台</label></span>
+                <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ichi" value="門台" />門台</label></span>
+                <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ichi" value="塀台" />塀台</label></span>
+                <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ichi" value="虎口" />虎口</label></span>
+                <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ichi" value="通路側壁" />通路側壁</label></span>
+                <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ichi" value="濠側壁" />濠側壁</label></span>
+                <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ichi" value="石段" />石段</label></span>
+                <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ichi" value="土留" />土留</label></span>
                 <div>
                     <span class="nowrap">
-                        <label class="leftoftext"><input type="radio" name="ishigaki_ichi" value="その他" />その他</label>
+                        <label class="leftoftext radioItem"><input type="radio" name="ishigaki_ichi" value="その他" />その他</label>
                         <label for="menichiOther">(具体的に)</label>
                     </span>
                 </div>
@@ -52,42 +52,42 @@
             <fieldset>
                 <legend>構造規模</legend>
 
-                <fieldset>
+                <fieldset class="fieldnoshadow">
                     <legend>地盤</legend>
 
                     <div>
                         <span>種別　　：</span>
-                        <span class="nowrap"><label><input type="radio" name="jiban_shubetsu" value="I種" />I種</label></span>
-                        <span class="nowrap"><label><input type="radio" name="jiban_shubetsu" value="II種" />II種</label></span>
-                        <span class="nowrap"><label><input type="radio" name="jiban_shubetsu" value="III種" />III種</label></span>
-                        <span class="nowrap"><label><input type="radio" name="jiban_shubetsu" value="不明" />不明</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="jiban_shubetsu" value="I種" />I種</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="jiban_shubetsu" value="II種" />II種</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="jiban_shubetsu" value="III種" />III種</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="jiban_shubetsu" value="不明" />不明</label></span>
                     </div>
 
                     <div>
                         <span>地盤区分：</span>
-                        <span class="nowrap"><label><input type="radio" name="jiban_kubun" value="岩" />岩</label></span>
-                        <span class="nowrap"><label><input type="radio" name="jiban_kubun" value="地山" />地山</label></span>
-                        <span class="nowrap"><label><input type="radio" name="jiban_kubun" value="堆積層" />堆積層</label></span>
-                        <span class="nowrap"><label><input type="radio" name="jiban_kubun" value="盛土" />盛土</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="jiban_kubun" value="岩" />岩</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="jiban_kubun" value="地山" />地山</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="jiban_kubun" value="堆積層" />堆積層</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="jiban_kubun" value="盛土" />盛土</label></span>
                     </div>
 
                     <div>
                         <span>地形　　：</span>
-                        <span class="nowrap"><label><input type="radio" name="jiban_chikei" value="丘陵" />丘陵</label></span>
-                        <span class="nowrap"><label><input type="radio" name="jiban_chikei" value="平地" />平地</label></span>
-                        <span class="nowrap"><label><input type="radio" name="jiban_chikei" value="旧谷地" />旧谷地</label></span>
-                        <span class="nowrap"><label><input type="radio" name="jiban_chikei" value="旧河川" />旧河川</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="jiban_chikei" value="丘陵" />丘陵</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="jiban_chikei" value="平地" />平地</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="jiban_chikei" value="旧谷地" />旧谷地</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="jiban_chikei" value="旧河川" />旧河川</label></span>
                     </div>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="fieldnoshadow">
                     <legend>造成</legend>
-                    <span class="nowrap"><label><input type="radio" name="zousei" value="旧地形まま" />旧地形まま</label></span>
-                    <span class="nowrap"><label><input type="radio" name="zousei" value="切土部" />切土部</label></span>
-                    <span class="nowrap"><label><input type="radio" name="zousei" value="盛土部" />盛土部</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="zousei" value="旧地形まま" />旧地形まま</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="zousei" value="切土部" />切土部</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="zousei" value="盛土部" />盛土部</label></span>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="fieldnoshadow">
                     <legend>石垣延長</legend>
                     <div>
                         <label for="enchouTenba" class="leftoftext">天端(m)</label>
@@ -127,7 +127,7 @@
                     </div>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="fieldnoshadow">
                     <legend>石垣高さ</legend>
                     <div>
                         <label for="maxTakasa" class="leftoftext">最大の高さ(m)</label>
@@ -149,19 +149,19 @@
                     </div>
                     <div>
                         <span>位置：</span>
-                        <span class="nowrap"><label><input type="radio" name="takasa_ichi" value="左" />左</label></span>
-                        <span class="nowrap"><label><input type="radio" name="takasa_ichi" value="中央" />中央</label></span>
-                        <span class="nowrap"><label><input type="radio" name="takasa_ichi" value="右" />右</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="takasa_ichi" value="左" />左</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="takasa_ichi" value="中央" />中央</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="takasa_ichi" value="右" />右</label></span>
                     </div>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="fieldnoshadow">
                     <legend>勾配</legend>
 
                     <div>
                         <span>反りの有無　　：</span>
-                        <span class="nowrap"><label><input type="radio" name="sori" value="有" />有</label></span>
-                        <span class="nowrap"><label><input type="radio" name="sori" value="無" />無</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="sori" value="有" />有</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="sori" value="無" />無</label></span>
                     </div>
 
                     <div>
@@ -204,11 +204,11 @@
 
                     <div>
                         <span>最大勾配の位置：</span>
-                        <span class="nowrap"><label><input type="radio" name="maxkoubai_ichi" value="隅・左部" />隅・左部</label></span>
-                        <span class="nowrap"><label><input type="radio" name="maxkoubai_ichi" value="左" />左</label></span>
-                        <span class="nowrap"><label><input type="radio" name="maxkoubai_ichi" value="中央" />中央</label></span>
-                        <span class="nowrap"><label><input type="radio" name="maxkoubai_ichi" value="右" />右</label></span>
-                        <span class="nowrap"><label><input type="radio" name="maxkoubai_ichi" value="隅・右部" />隅・右部</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="maxkoubai_ichi" value="隅・左部" />隅・左部</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="maxkoubai_ichi" value="左" />左</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="maxkoubai_ichi" value="中央" />中央</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="maxkoubai_ichi" value="右" />右</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="maxkoubai_ichi" value="隅・右部" />隅・右部</label></span>
                     </div>
                     <div>
                         <label for="menseki" class="leftoftext">面積(㎡)</label>
@@ -235,19 +235,19 @@
             <fieldset>
                 <legend>積み方</legend>
 
-                <fieldset>
+                <fieldset class="fieldnoshadow">
                     <legend>隅部</legend>
-                    <span class="nowrap"><label><input type="radio" name="tsumikata_sumi" value="算木積み" />算木積み</label></span>
-                    <span class="nowrap"><label><input type="radio" name="tsumikata_sumi" value="非算木積み" />非算木積み</label></span>
-                    <span class="nowrap"><label><input type="radio" name="tsumikata_sumi" value="その他" />その他</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="tsumikata_sumi" value="算木積み" />算木積み</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="tsumikata_sumi" value="非算木積み" />非算木積み</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="tsumikata_sumi" value="その他" />その他</label></span>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="fieldnoshadow">
                     <legend>平部</legend>
-                    <span class="nowrap"><label><input type="radio" name="tsumikata_hira" value="乱積み" />乱積み</label></span>
-                    <span class="nowrap"><label><input type="radio" name="tsumikata_hira" value="布崩し積み" />布崩し積み</label></span>
-                    <span class="nowrap"><label><input type="radio" name="tsumikata_hira" value="布積み" />布積み</label></span>
-                    <span class="nowrap"><label><input type="radio" name="tsumikata_hira" value="谷積み" />谷積み</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="tsumikata_hira" value="乱積み" />乱積み</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="tsumikata_hira" value="布崩し積み" />布崩し積み</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="tsumikata_hira" value="布積み" />布積み</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="tsumikata_hira" value="谷積み" />谷積み</label></span>
                 </fieldset>
             </fieldset>
 
@@ -255,39 +255,39 @@
             <fieldset>
                 <legend>石材</legend>
 
-                <fieldset>
+                <fieldset class="fieldnoshadow">
                     <legend>形状</legend>
-                    <span class="nowrap"><label><input type="radio" name="sekizai_keijou" value="野面石" />野面石</label></span>
-                    <span class="nowrap"><label><input type="radio" name="sekizai_keijou" value="割石" />割石</label></span>
-                    <span class="nowrap"><label><input type="radio" name="sekizai_keijou" value="切石" />切石</label></span>
-                    <span class="nowrap"><label><input type="radio" name="sekizai_keijou" value="間知石（空積み・練積み）" />間知石（空積み・練積み）</label></span>
-                    <span class="nowrap"><label><input type="radio" name="sekizai_keijou" value="その他" />その他</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="sekizai_keijou" value="野面石" />野面石</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="sekizai_keijou" value="割石" />割石</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="sekizai_keijou" value="切石" />切石</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="sekizai_keijou" value="間知石（空積み・練積み）" />間知石（空積み・練積み）</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="sekizai_keijou" value="その他" />その他</label></span>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="fieldnoshadow">
                     <legend>合端加工</legend>
-                    <span class="nowrap"><label><input type="radio" name="aibata" value="なし（自然石まま）" />なし（自然石まま）</label></span>
-                    <span class="nowrap"><label><input type="radio" name="aibata" value="粗加工（打込ハギ）" />粗加工（打込ハギ）</label></span>
-                    <span class="nowrap"><label><input type="radio" name="aibata" value="精加工（切込ハギ）" />精加工（切込ハギ）</label></span>
-                    <span class="nowrap"><label><input type="radio" name="aibata" value="その他" />その他</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="aibata" value="なし（自然石まま）" />なし（自然石まま）</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="aibata" value="粗加工（打込ハギ）" />粗加工（打込ハギ）</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="aibata" value="精加工（切込ハギ）" />精加工（切込ハギ）</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="aibata" value="その他" />その他</label></span>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="fieldnoshadow">
                     <legend>岩石種</legend>
-                    <span class="nowrap"><label><input type="radio" name="ganseki" value="花崗岩" />花崗岩</label></span>
-                    <span class="nowrap"><label><input type="radio" name="ganseki" value="安山岩" />安山岩</label></span>
-                    <span class="nowrap"><label><input type="radio" name="ganseki" value="凝灰岩" />凝灰岩</label></span>
-                    <span class="nowrap"><label><input type="radio" name="ganseki" value="砂岩" />砂岩</label></span>
-                    <span class="nowrap"><label><input type="radio" name="ganseki" value="その他" />その他</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="ganseki" value="花崗岩" />花崗岩</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="ganseki" value="安山岩" />安山岩</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="ganseki" value="凝灰岩" />凝灰岩</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="ganseki" value="砂岩" />砂岩</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="ganseki" value="その他" />その他</label></span>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="fieldnoshadow">
                     <legend>築石控長</legend>
-                    <span class="nowrap"><label><input type="radio" name="tsukiishi_hikae" value="60cm未満" />60cm未満</label></span>
-                    <span class="nowrap"><label><input type="radio" name="tsukiishi_hikae" value="60〜90cm" />60〜90cm</label></span>
-                    <span class="nowrap"><label><input type="radio" name="tsukiishi_hikae" value="90〜120cm" />90〜120cm</label></span>
-                    <span class="nowrap"><label><input type="radio" name="tsukiishi_hikae" value="120〜150cm" />120〜150cm</label></span>
-                    <span class="nowrap leftoftext"><label class="leftoftext"><input type="radio" name="tsukiishi_hikae" value="150cm以上" />150cm以上</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="tsukiishi_hikae" value="60cm未満" />60cm未満</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="tsukiishi_hikae" value="60〜90cm" />60〜90cm</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="tsukiishi_hikae" value="90〜120cm" />90〜120cm</label></span>
+                    <span class="nowrap"><label class="radioItem"><input type="radio" name="tsukiishi_hikae" value="120〜150cm" />120〜150cm</label></span>
+                    <span class="nowrap leftoftext"><label class="leftoftext radioItem"><input type="radio" name="tsukiishi_hikae" value="150cm以上" />150cm以上</label></span>
                     <div>
                         <label for="tsukiishiAvg" class="leftoftext">(平均約 cm)</label>
                         <input
@@ -312,15 +312,15 @@
             <!-- 石垣タイプ -->
             <fieldset>
                 <legend>石垣タイプ</legend>
-                <div><label><input type="radio" name="ishigakiType" value="非石塁（栗石層＋地山）" />非石塁（栗石層＋地山）</label></div>
-                <div><label><input type="radio" name="ishigakiType" value="非石塁（栗石層＋盛土）" />非石塁（栗石層＋盛土）</label></div>
-                <div><label><input type="radio" name="ishigakiType" value="半石塁（栗石層＋地山）" />半石塁（栗石層＋地山）</label></div>
-                <div><label><input type="radio" name="ishigakiType" value="半石塁（栗石層＋盛土）" />半石塁（栗石層＋盛土）</label></div>
-                <div><label><input type="radio" name="ishigakiType" value="半石塁突出形（突出しているもの）" />半石塁突出形（突出しているもの）</label></div>
-                <div><label><input type="radio" name="ishigakiType" value="石塁（栗石＋盛土）" />石塁（栗石＋盛土）</label></div>
-                <div><label><input type="radio" name="ishigakiType" value="石塁（栗石のみ）" />石塁（栗石のみ）</label></div>
-                <div><label><input type="radio" name="ishigakiType" value="栗石なし、盛土のみ" />栗石なし、盛土のみ</label></div>
-                <div><label><input type="radio" name="ishigakiType" value="不明" />不明</label></div>
+                <div><label class="radioItem"><input type="radio" name="ishigakiType" value="非石塁（栗石層＋地山）" />非石塁（栗石層＋地山）</label></div>
+                <div><label class="radioItem"><input type="radio" name="ishigakiType" value="非石塁（栗石層＋盛土）" />非石塁（栗石層＋盛土）</label></div>
+                <div><label class="radioItem"><input type="radio" name="ishigakiType" value="半石塁（栗石層＋地山）" />半石塁（栗石層＋地山）</label></div>
+                <div><label class="radioItem"><input type="radio" name="ishigakiType" value="半石塁（栗石層＋盛土）" />半石塁（栗石層＋盛土）</label></div>
+                <div><label class="radioItem"><input type="radio" name="ishigakiType" value="半石塁突出形（突出しているもの）" />半石塁突出形（突出しているもの）</label></div>
+                <div><label class="radioItem"><input type="radio" name="ishigakiType" value="石塁（栗石＋盛土）" />石塁（栗石＋盛土）</label></div>
+                <div><label class="radioItem"><input type="radio" name="ishigakiType" value="石塁（栗石のみ）" />石塁（栗石のみ）</label></div>
+                <div><label class="radioItem"><input type="radio" name="ishigakiType" value="栗石なし、盛土のみ" />栗石なし、盛土のみ</label></div>
+                <div><label class="radioItem"><input type="radio" name="ishigakiType" value="不明" />不明</label></div>
             </fieldset>
 
             <!-- 年代 -->
@@ -334,9 +334,9 @@
             <!-- 被災の履歴 -->
             <fieldset>
                 <legend>被災の履歴</legend>
-                <label><input type="radio" name="hisai" value="あり" />あり</label>
-                <label><input type="radio" name="hisai" value="なし" />なし</label>
-                <label><input type="radio" name="hisai" value="不明" />不明</label>
+                <label class="radioItem"><input type="radio" name="hisai" value="あり" />あり</label>
+                <label class="radioItem"><input type="radio" name="hisai" value="なし" />なし</label>
+                <label class="radioItem"><input type="radio" name="hisai" value="不明" />不明</label>
 
                 <div>
                     <label for="hisaiDetail">→ありの場合は下に具体的に記入</label><br />
@@ -347,9 +347,9 @@
             <!-- 修理の履歴 -->
             <fieldset>
                 <legend>修理の履歴</legend>
-                <label><input type="radio" name="kaishu" value="あり" />あり</label>
-                <label><input type="radio" name="kaishu" value="なし" />なし</label>
-                <label><input type="radio" name="kaishu" value="不明" />不明</label>
+                <label class="radioItem"><input type="radio" name="kaishu" value="あり" />あり</label>
+                <label class="radioItem"><input type="radio" name="kaishu" value="なし" />なし</label>
+                <label class="radioItem"><input type="radio" name="kaishu" value="不明" />不明</label>
 
                 <div>
                     <label for="kaishuDetail">→ありの場合は下に具体的に記入</label><br />
@@ -360,59 +360,59 @@
             <!-- 用途区分  -->
             <fieldset>
                 <legend>用途区分</legend>
-                <fieldset>
+                <fieldset class="fieldnoshadow">
                     <legend>石垣上</legend>
-                    <fieldset>
+                    <fieldset class="fieldnoshadow">
                         <legend>建造物</legend>
-                        <span class="nowrap"><label><input type="radio" name="ishigaki_ue_kenzo" value="有（文化財）" />有（文化財）</label></span>
-                        <span class="nowrap"><label><input type="radio" name="ishigaki_ue_kenzo" value="有（復元）" />有（復元）</label></span>
-                        <span class="nowrap"><label><input type="radio" name="ishigaki_ue_kenzo" value="有（その他）" />有（その他）</label></span>
-                        <span class="nowrap"><label><input type="radio" name="ishigaki_ue_kenzo" value="無" />無</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ue_kenzo" value="有（文化財）" />有（文化財）</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ue_kenzo" value="有（復元）" />有（復元）</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ue_kenzo" value="有（その他）" />有（その他）</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ue_kenzo" value="無" />無</label></span>
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="fieldnoshadow">
                         <legend>立ち入り</legend>
-                        <fieldset>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_ue_tachi_1" value="可" />可</label></span>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_ue_tachi_1" value="不可" />不可</label></span>
+                        <fieldset class="fieldnoborder">
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ue_tachi_1" value="可" />可</label></span>
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ue_tachi_1" value="不可" />不可</label></span>
                         </fieldset>
-                        <fieldset>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_ue_tachi_2" value="常時" />常時</label></span>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_ue_tachi_2" value="時々" />時々</label></span>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_ue_tachi_2" value="一時のみ" />一時のみ</label></span>
+                        <fieldset class="fieldnoborder">
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ue_tachi_2" value="常時" />常時</label></span>
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ue_tachi_2" value="時々" />時々</label></span>
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ue_tachi_2" value="一時のみ" />一時のみ</label></span>
                         </fieldset>
-                        <fieldset>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_ue_tachi_3" value="不特定多数" />不特定多数</label></span>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_ue_tachi_3" value="不特定少数" />不特定少数</label></span>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_ue_tachi_3" value="関係者のみ" />関係者のみ</label></span>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_ue_tachi_3" value="無" />無</label></span>
+                        <fieldset class="fieldnoborder">
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ue_tachi_3" value="不特定多数" />不特定多数</label></span>
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ue_tachi_3" value="不特定少数" />不特定少数</label></span>
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ue_tachi_3" value="関係者のみ" />関係者のみ</label></span>
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_ue_tachi_3" value="無" />無</label></span>
                         </fieldset>
                     </fieldset>
                 </fieldset>
-                <fieldset>
+                <fieldset class="fieldnoshadow">
                     <legend>石垣下</legend>
-                    <fieldset>
-                        <span class="nowrap"><label><input type="radio" name="ishigaki_shita_type" value="平地" />平地</label></span>
-                        <span class="nowrap"><label><input type="radio" name="ishigaki_shita_type" value="道路・隣地等近接" />道路・隣地等近接</label></span>
-                        <span class="nowrap"><label><input type="radio" name="ishigaki_shita_type" value="空堀" />空堀</label></span>
-                        <span class="nowrap"><label><input type="radio" name="ishigaki_shita_type" value="水堀" />水堀</label></span>
-                        <span class="nowrap"><label><input type="radio" name="ishigaki_shita_type" value="建造物" />建造物</label></span>
+                    <fieldset class="fieldnoborder">
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_shita_type" value="平地" />平地</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_shita_type" value="道路・隣地等近接" />道路・隣地等近接</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_shita_type" value="空堀" />空堀</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_shita_type" value="水堀" />水堀</label></span>
+                        <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_shita_type" value="建造物" />建造物</label></span>
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="fieldnoshadow">
                         <legend>立ち入り</legend>
-                        <fieldset>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_shita_tachi_1" value="可" />可</label></span>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_shita_tachi_1" value="不可" />不可</label></span>
+                        <fieldset class="fieldnoborder">
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_shita_tachi_1" value="可" />可</label></span>
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_shita_tachi_1" value="不可" />不可</label></span>
                         </fieldset>
-                        <fieldset>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_shita_tachi_2" value="常時" />常時</label></span>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_shita_tachi_2" value="時々" />時々</label></span>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_shita_tachi_2" value="一時のみ" />一時のみ</label></span>
+                        <fieldset class="fieldnoborder">
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_shita_tachi_2" value="常時" />常時</label></span>
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_shita_tachi_2" value="時々" />時々</label></span>
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_shita_tachi_2" value="一時のみ" />一時のみ</label></span>
                         </fieldset>
-                        <fieldset>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_shita_tachi_3" value="不特定多数" />不特定多数</label></span>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_shita_tachi_3" value="不特定少数" />不特定少数</label></span>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_shita_tachi_3" value="関係者のみ" />関係者のみ</label></span>
-                            <span class="nowrap"><label><input type="radio" name="ishigaki_shita_tachi_3" value="無" />無</label></span>
+                        <fieldset class="fieldnoborder">
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_shita_tachi_3" value="不特定多数" />不特定多数</label></span>
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_shita_tachi_3" value="不特定少数" />不特定少数</label></span>
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_shita_tachi_3" value="関係者のみ" />関係者のみ</label></span>
+                            <span class="nowrap"><label class="radioItem"><input type="radio" name="ishigaki_shita_tachi_3" value="無" />無</label></span>
                         </fieldset>
                     </fieldset>
                 </fieldset>
