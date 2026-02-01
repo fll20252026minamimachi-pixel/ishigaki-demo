@@ -389,39 +389,38 @@ thepdf.addEventListener("click", async () => {
     pdf.autoTable({
       startY: cursorY,
       body: kihonBody,
-      margin: { left: MARGIN_X, right: MARGIN_X }, // ★追加
-      tableWidth: "auto",                          // ★追加（安定）
-      styles: { font: "NotoSansJP", fontSize: 10, cellPadding: 2, overflow: "linebreak" },
+      margin: { left: MARGIN_X, right: MARGIN_X },
+      tableWidth: "auto",
 
+      // ✅追加：縞模様を無効化
+      theme: "plain",
+      alternateRowStyles: { fillColor: false },
+
+      styles: { font: "NotoSansJP", fontSize: 10, cellPadding: 2, overflow: "linebreak" },
       columnStyles: {
         0: { cellWidth: w0 },
         1: { cellWidth: w1, overflow: "linebreak" },
       },
-      
       didParseCell: (data) => {
-        // 親見出し行（colSpan=2）
+        if (data.column.index === 0) data.cell.styles.fontStyle = "bold";
+
+        // 親見出し行（背景色は付けない方針なのでこのまま）
         if (data.cell.raw && data.cell.raw.colSpan === 2) {
-          data.cell.styles.fillColor = [235, 235, 235];
           data.cell.styles.fontStyle = "bold";
           data.cell.styles.cellPadding = 3;
           return;
         }
 
-        // 子項目：直前が「親見出し」だった行以降を判定できないので、
-        // 今回は「左列の文字が短い＝子項目」で寄せるのが簡単です。
-        // ★確実にするなら、下の方法2がおすすめです
-
-        // 子行っぽい時だけ、左列をインデント
+        // （以下は今のインデント処理が必要なら残す）
         if (data.column.index === 0) {
           const row = data.row.raw; // [項目, 内容]
           if (Array.isArray(row) && row.length === 2) {
             const label = row[0] ?? "";
-
-            // 親見出し（構造規模/積み方/石材）ではない、かつ値がある = 子扱い
-            // ここは条件を少しゆるめています
-            if (label && label !== "石垣番号" && label !== "地区名" && label !== "石垣面位置"
-                && label !== "石垣タイプ" && label !== "年代" && label !== "被災の履歴" && label !== "改修の履歴") {
-              // ★2文字分くらい（mm）は環境によるが、6mm前後が目安
+            if (
+              label &&
+              label !== "石垣番号" && label !== "地区名" && label !== "石垣面位置" &&
+              label !== "石垣タイプ" && label !== "年代" && label !== "被災の履歴" && label !== "改修の履歴"
+            ) {
               data.cell.styles.cellPadding = { top: 2, right: 2, bottom: 2, left: 8 };
             }
           }
@@ -436,31 +435,38 @@ thepdf.addEventListener("click", async () => {
     const buildDiagnosisRows = (data) => {
       const rows = [];
       const items = data?.items ?? {};
+
       for (const [category, value] of Object.entries(items)) {
-        // カテゴリ見出し行（1行まるごと）
-        rows.push([{ content: category, colSpan: 4, styles: { fontStyle: "bold" } }]);
 
         if (Array.isArray(value)) {
-          // 子要素が複数
-          value.forEach(obj => {
+          // ✅ 子項目あり → カテゴリ見出し行 + 子行
+          rows.push([{ content: category, colSpan: 4, styles: { fontStyle: "bold" } }]);
+
+          value.forEach((obj) => {
             const [label, detail] = Object.entries(obj)[0] ?? ["", {}];
             rows.push([
-              label,
+              "　" + label,
               detail?.text ?? "",
               String(detail?.point ?? ""),
               detail?.note ?? ""
             ]);
           });
+
         } else if (value && typeof value === "object") {
-          // 単体
+          // ✅ 子項目なし → 1行だけ（見出し行は作らない）
           rows.push([
-            category,               // 同じでもOK（気になるなら空文字にしてもOK）
+            category,
             value?.text ?? "",
             String(value?.point ?? ""),
             value?.note ?? ""
           ]);
+
+        } else {
+          // 想定外
+          rows.push([category, String(value ?? ""), "", ""]);
         }
       }
+
       return rows;
     };
 
@@ -470,7 +476,7 @@ thepdf.addEventListener("click", async () => {
       const usableW = pageW - MARGIN_X * 2;
 
       // 固定したい列幅
-      const w0 = 45; // 診断項目
+      const w0 = 75; // 診断項目
       const w2 = 15; // 評点
       const w3 = 25; // 特記事項
 
@@ -490,19 +496,47 @@ thepdf.addEventListener("click", async () => {
         startY: cursorY,
         head: [["診断項目", "内容", "評点", "特記事項"]],
         body,
-        margin: { left: MARGIN_X, right: MARGIN_X },   // ★追加
-        tableWidth: "auto",                             // ★wrapよりautoが安定しやすい
-        styles: { font: "NotoSansJP", fontSize: 10, cellPadding: 2, overflow: "linebreak" },
-        headStyles: { font: "NotoSansJP", fontStyle: "bold" },
+        margin: { left: MARGIN_X, right: MARGIN_X },
+        tableWidth: "auto",
+
+        // ✅縞模様を無効化
+        theme: "plain",
+        alternateRowStyles: { fillColor: false },
+
+        // ✅本文は常に白（色無し）
+        styles: {
+          font: "NotoSansJP",
+          fontSize: 10,
+          cellPadding: 2,
+          overflow: "linebreak",
+          fillColor: [255, 255, 255],
+        },
+
+        // ✅1行目（ヘッダ）だけ背景色あり
+        headStyles: {
+          font: "NotoSansJP",
+          fontStyle: "bold",
+          fillColor: [230, 230, 230], // ←好きな薄いグレーに調整OK
+          textColor: 0,
+        },
+
         columnStyles: {
           0: { cellWidth: w0 },
-          1: { cellWidth: w1, overflow: "linebreak" }, // ★自動計算
+          1: { cellWidth: w1, overflow: "linebreak" },
           2: { cellWidth: w2, halign: "center" },
           3: { cellWidth: w3, overflow: "linebreak" }
         },
-        didParseCell: (hookData) => {
-          if (hookData.cell.raw && hookData.cell.raw.colSpan === 4) {
-            hookData.cell.styles.fillColor = [235, 235, 235];
+
+        didParseCell: (d) => {
+          // ✅1列目（診断項目）は常に太字
+          if (d.column.index === 0) {
+            d.cell.styles.fontStyle = "bold";
+          }
+
+          // ✅カテゴリ行(colSpan=4)は「背景色なし」にしたいので白固定
+          if (d.cell.raw && d.cell.raw.colSpan === 4) {
+            d.cell.styles.fillColor = [255, 255, 255];
+            d.cell.styles.fontStyle = "bold"; // 太字は維持
           }
         }
       });
