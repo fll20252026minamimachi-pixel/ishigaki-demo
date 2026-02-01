@@ -34,7 +34,7 @@ body{
   background: var(--panel);
 
   min-height: 100dvh;
-  padding: 18px 14px 60px;
+  padding: 64px 14px 60px;
 }
 
 /* ===== 戻る（ホームへ） ===== */
@@ -90,7 +90,8 @@ body > *{
 /* ===== タイトル ===== */
 h1{
   text-align: center;
-  margin-bottom: 50px;
+  margin-top: 10px;
+  margin-bottom: 22px;
 
   font-size: clamp(22px, 3vw, 34px);
   font-weight: 900;
@@ -145,7 +146,7 @@ h1{
 
   background: rgba(255,255,255,.06);
   border: 1px solid rgba(255,255,255,.14);
-  border-radius: var(--radius);
+  border-radius: 10px;
   overflow: hidden;
 
   margin: 0 0 14px;
@@ -262,7 +263,6 @@ h1{
 }
 /* モバイルで表が崩れにくいように */
 @media (max-width: 640px){
-  body{ padding-top: 64px; } /* 固定の戻るボタン分 */
   .resultTable{ font-size: 13px; }
 
   .resultTable td.label{ white-space: normal; }
@@ -317,7 +317,7 @@ h1{
   border-radius: 999px;
 
   box-shadow:
-    0 2px 15px lightcoral,
+    0 2px 15px lightblue,
     inset 0 1px 0 rgba(255,255,255,.25);
 
   cursor: pointer;
