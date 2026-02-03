@@ -27,7 +27,6 @@ body{
   margin:0;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
   color: var(--text);
-  background: linear-gradient(180deg, var(--bg1), var(--bg2));
   min-height: 100dvh;
   padding: 64px 14px 60px;
 }
@@ -44,7 +43,7 @@ header{
   position: sticky;
   top: 0;
   z-index: 10;
-  padding: 10px 0 12px;
+  padding: 10px 0 20px;
   margin: 0 auto 14px;
   background: linear-gradient(180deg, rgba(248,250,252,.92), rgba(238,242,255,.70));
   backdrop-filter: blur(8px);
@@ -66,7 +65,6 @@ h1{
   left: 14px;
   z-index: 1000;
   margin: 0;
-  padding: 0;
 }
 
 #modoru a{
@@ -95,7 +93,7 @@ h1{
   margin: 0;
   display:flex;
   flex-wrap: wrap;
-  gap: 8px 10px;
+  gap: 8px 20px;
   justify-content:center;
 }
 .nav li{ margin:0; }
@@ -126,13 +124,12 @@ h1{
 .hidden{ display:none !important; }
 .kaku{ display:none; } /* 元CSS互換：不要ならHTML側で削除OK */
 
-section, .card, .middle{
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
-  padding: 14px;
-  margin: 14px auto;
+.middle{
+  padding-bottom: 50px;
+}
+
+#setsumei{
+  text-align: center;
 }
 
 h2, .daimei{
@@ -248,21 +245,6 @@ canvas#preview,
 /* ===== takasa.html specific adjustments ===== */
 .e{ text-align:center; margin: 14px auto 0; }
 
-#takasa-shasin{
-  /* 旧: padding-right:1000px; 等で崩れやすいので撤去し、ボタン/リンクとして整える */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 120px;
-  padding: 10px 12px;
-  border-radius: 14px;
-  border: 1px solid rgba(17,24,39,.12);
-  background: rgba(255,255,255,.70);
-  color: var(--text);
-  font-weight: 900;
-  text-decoration: none;
-}
-
 #tukaikata-takasa,
 #kettei,
 #keisoku,
@@ -286,17 +268,20 @@ canvas#preview,
 .green{ color: rgb(67, 219, 103); }
 .blue{ color: rgb(72, 110, 255); }
 
-/* ===== Mobile ===== */
-@media (max-width: 600px){
-  body{ padding-top: 58px; }
-  header{ padding-top: 6px; }
-  h1{ margin-bottom: 24px; }
+/* 勾配調査ボタンを強調表示（青＋白文字＋大きめ） */
+.nav a.nav-koubai{
+  background: var(--primary);   /* 青 */
+  color: #fff;                 /* 白文字 */
+  border-color: rgba(37,99,235,.55);
 
-  .middle{ padding: 12px; }
-  .nav a{ padding: 8px 10px; }
+  /* 1.5倍くらい大きく */
+  transform: scale(1.2);
+  transform-origin: center;
+}
 
-  /* 旧モバイル指定を引き継ぎつつ、崩れないように */
-  .nav ul{
-    justify-content: center;
-  }
+/* hover時 */
+.nav a.nav-koubai:hover{
+  background: var(--primary-hover);
+  color: #fff;
+  transform: scale(1.3) translateY(-1px);
 }
