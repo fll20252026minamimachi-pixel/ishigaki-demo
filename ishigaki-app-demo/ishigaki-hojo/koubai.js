@@ -1,14 +1,5 @@
-const tukaikata = document.getElementById('tukaikata-koubai');
-const setumei = document.getElementById('tukaikata-koubai-text');
-
-tukaikata.addEventListener('click', () => {
-  // ボタンクリックでhiddenクラスを付け外しする
-  setumei.classList.toggle('hidden');
-});
-
-
-const shasin  = document.getElementById('koubai-shasin');
-const canvas  = document.getElementById('preview');      // ← canvas を取得
+const shasin = document.getElementById("koubai-shasin");
+const canvas = document.getElementById("preview");
 const ctx     = canvas.getContext('2d');
 let gazou = null;
 let fitt = null;
@@ -42,7 +33,6 @@ function fitContain(iw, ih, cw, ch) {
   else         { h = ch; w = ch * ir; }
   return { x: (cw - w) / 2, y: (ch - h) / 2, w, h };
 }
-
 
 const ten = [];
 
@@ -86,6 +76,10 @@ function zahyou(evt,canvas){
 function sen(){
   if (ten.length < 2) return;
   ctx.save();
+
+  ctx.strokeStyle = "#ff0000";  // 赤（目立つ）
+  ctx.lineWidth = 4;            // 太さ
+
   for (let i = 1; i < ten.length; i++){
     ctx.beginPath();
     ctx.moveTo(ten[i-1].x,ten[i-1].y);
@@ -101,13 +95,6 @@ const dai = document.getElementById('dai');
 const shou = document.getElementById('shou');
 const sa = document.getElementById('sa');
 const kekka = document.getElementById('kekka');
-
-kekka.addEventListener('click',(e)=>{
-  heikin.classList.toggle('kaku');
-  dai.classList.toggle('kaku');
-  shou.classList.toggle('kaku');
-  sa.classList.toggle('kaku');
-})
 
 //tukareta ima 19:00;
 
@@ -151,21 +138,21 @@ function allGradients() {
 function keisan() {
   const angles = allAngles({ abs: true }); // ★ 角度(度)で集計。向き不要なら abs:true
  if (angles.length === 0) {
-    heikin.textContent = '平均角度：—';
-    dai.textContent    = '最大角度：—';
-    shou.textContent   = '最小角度：—';
-    sa.textContent     = '差：—';
+    heikin.textContent = '—';
+    dai.textContent    = '—';
+    shou.textContent   = '—';
+    sa.textContent     = '—';
      return;
    }
   const max  = Math.max(...angles);
   const min  = Math.min(...angles);
   const avg  = angles.reduce((s, n) => s + n, 0) / angles.length;
-   const diff = max - min;
+  const diff = max - min;
 
-   heikin.textContent = '平均角度：' + avg.toFixed(1) + '°';
-  dai.textContent    = '最大角度：' + max.toFixed(1) + '°';
-  shou.textContent   = '最小角度：' + min.toFixed(1) + '°';
-  sa.textContent     = '差：'       + diff.toFixed(1) + '°';
+  heikin.textContent = avg.toFixed(1) + '°';
+  dai.textContent    = max.toFixed(1) + '°';
+  shou.textContent   = min.toFixed(1) + '°';
+  sa.textContent     = diff.toFixed(1) + '°';
 }
 // ★ 追加：全線分の角度[度]を配列で返す（abs=true なら 0〜90°）
 function allAngles({ abs = true } = {}) {
@@ -178,16 +165,61 @@ function allAngles({ abs = true } = {}) {
   }
   return res;
 }
+
 const risetto = document.getElementById('risetto');
 risetto.addEventListener('click',(e)=>{
   ten.length = 0;
-  heikin.textContent = '平均角度：—';
-  dai.textContent    = '最大角度：—';
-  shou.textContent   = '最小角度：—';
-  sa.textContent     = '差：—';
+  heikin.textContent = '—';
+  dai.textContent    = '—';
+  shou.textContent   = '—';
+  sa.textContent     = '—';
   drawall();
-
-
 })
 
+function fitCanvasToParent(canvas) {
+  const parent = canvas.parentElement;
+  const rect = parent.getBoundingClientRect();
 
+  const dpr = window.devicePixelRatio || 1;
+
+  // CSSサイズ（見た目）
+  canvas.style.width = rect.width + "px";
+  canvas.style.height = rect.height + "px";
+
+  // 実サイズ（描画解像度）
+  canvas.width = Math.round(rect.width * dpr);
+  canvas.height = Math.round(rect.height * dpr);
+
+  const ctx = canvas.getContext("2d");
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+function fitCanvasAndDrawContain(canvas, img){
+  const ctx = canvas.getContext("2d");
+
+  // CSS上の表示サイズ（親.eで決まる）
+  const cw = canvas.clientWidth;
+  const ch = canvas.clientHeight;
+
+  // Retina等の高DPI対応（ぼやけ防止）
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width  = Math.round(cw * dpr);
+  canvas.height = Math.round(ch * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  // 収める倍率（縦横比維持）
+  const iw = img.naturalWidth;
+  const ih = img.naturalHeight;
+  const scale = Math.min(cw / iw, ch / ih);
+
+  const dw = iw * scale;
+  const dh = ih * scale;
+  const dx = (cw - dw) / 2;
+  const dy = (ch - dh) / 2;
+
+  ctx.clearRect(0, 0, cw, ch);
+  ctx.drawImage(img, dx, dy, dw, dh);
+
+  // クリックで線を引く等のために、描画位置/倍率を保持したいなら戻り値で返す
+  return { dx, dy, dw, dh, scale };
+}
