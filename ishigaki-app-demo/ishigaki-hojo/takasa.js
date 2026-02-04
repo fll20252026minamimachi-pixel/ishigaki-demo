@@ -11,6 +11,7 @@ const canvas  = document.getElementById('preview');      // ← canvas を取得
 const ctx     = canvas.getContext('2d');
 let gazou = null;
 let fitt = null;
+let mode = null;
 
 shasin.addEventListener('change', (e) => {
   const file = e.target.files && e.target.files[0];
@@ -31,7 +32,7 @@ shasin.addEventListener('change', (e) => {
 
   };
   image.src = url;
-
+  mode = "init";
 });
 
 /*const shakudo = document.getElementById('shakudo');
@@ -40,7 +41,6 @@ const step4 = document.getElementById('step4');
 const tensha = [];
 const tenna = [];
 
-let mode = "none";
 /*function iroduke (){
 if(mode === "none"){
   hakaru.classList.remove('active');
@@ -71,25 +71,11 @@ const tyanto = document.getElementById('tyanto');
 const kijunjityou = document.getElementById('kijunjityou');
 let distance = null;
 let kijun = null;
-sousin.addEventListener('click',(e) => {
-    if (!gazou || !fitt){
-    kijunjityou.innerHTML = '<span class="blue";">まずstep.1を行ってください</span>';
-    return;
-  }
-  mode = "shakudo"; 
-  /*if (tensha.length < 2) {
-     wariai.innerHTML = '基準設定：<span class="blue";">まず「基準設定」で2点を選んでください</span>';
-    return;
-  }*/
-  // px(canvas内)/cm
-  kijun = Number(suuzi.value);
-  kijunjityou.innerHTML = '<span class="green";">送信完了！</span>';
-  
-});
 
 // ★ これまで2つあったものを削除して、1つにまとめる
 canvas.addEventListener('click', (e) => {
   if (!gazou || !fitt) return; // 画像未読み込みなら何もしない
+
   const { x, y } = zahyou(e,canvas);
   const insideX = (x >= fitt.x) && (x <= fitt.x + fitt.w);
   const insideY = (y >= fitt.y) && (y <= fitt.y + fitt.h);
@@ -97,21 +83,29 @@ canvas.addEventListener('click', (e) => {
     return; // ← 画像の外は無視
   }
 
-  if (mode === 'shakudo') {
+  if (mode === 'init') {
+    kijun = Number(suuzi.value);
+    if (kijun <= 0) {
+      alert("Step.2を入力してください");
+      return;
+    }
+//  } else if (mode === 'shakudo') {
     tensha.push({ x, y });
     if (tensha.length > 2) tensha.shift(); // 最新2点だけ残す
     if (tensha.length >= 2){
-    distance = kyori(tensha[0], tensha[1]) / kijun;
-    wariai.innerHTML = '基準設定：<span class="green";">完了！</span>';
-    mode='hakaru';
-    step4.classList.remove('hidden');
-}
+      distance = kyori(tensha[0], tensha[1]) / kijun;
+//      wariai.innerHTML = '基準設定：<span class="green";">完了！</span>';
+      mode='hakaru';
+      step4.classList.remove('hidden');
+    }
     
   } else if (mode === 'hakaru') {
     tenna.push({ x, y });
-    if (tenna.length > 2) tenna.shift();
+    if (tenna.length > 2) {
+      tenna.shift();
+    }
   } else {
-    return; // mode='none' の場合は何もしない
+    return; // mode=null の場合は何もしない
   }
 
   drawAll();
@@ -155,7 +149,7 @@ function drawAll() {
   if (tensha.length >= 2) {
     ctx.save();
     ctx.strokeStyle = '#2563eb';
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 4;
     ctx.beginPath();
     ctx.moveTo(tensha[0].x, tensha[0].y);
     ctx.lineTo(tensha[1].x, tensha[1].y);
@@ -173,12 +167,15 @@ function drawAll() {
   if (tenna.length >= 2) {
     ctx.save();
     ctx.strokeStyle = '#ef4444';
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 4;
     ctx.beginPath();
     ctx.moveTo(tenna[0].x, tenna[0].y);
     ctx.lineTo(tenna[1].x, tenna[1].y);
     ctx.stroke();
     ctx.restore(); // ★ ← restore() に () を追加！
+
+    const far = kyori(tenna[0],tenna[1]) / distance;
+    tyanto.textContent = far.toFixed(4);
   }
 }
 
@@ -187,24 +184,17 @@ function kyori(p1, p2) {
   return Math.hypot(p2.x - p1.x, p2.y - p1.y);
 }
 
-const keisoku = document.getElementById('keisoku');
-keisoku.addEventListener('click',(e)=>{
- // px(canvas内)/cm
-  const far = kyori(tenna[0],tenna[1])/distance;
- tyanto.textContent = "結果：" + far.toFixed(4) + "cm";
-})
-
 const risetto = document.getElementById('risetto');
 risetto.addEventListener('click',(e)=>{
   tensha.length = 0;
   tenna.length  = 0;
-  mode = null;
+  mode = "init";
   kijun = null;
   distance = null;
   step4.classList.add('hidden');
-  kijunjityou.innerHTML = '<span class="blue";">未送信</span>';
-  wariai.innerHTML = '基準設定：<span class="blue";">未設定</span>';
-  tyanto.textContent = '結果：';
+//  kijunjityou.innerHTML = '<span class="blue";">未送信</span>';
+//  wariai.innerHTML = '基準設定：<span class="blue";">未設定</span>';
+  tyanto.textContent = 'ー';
   
   drawAll();
 });
