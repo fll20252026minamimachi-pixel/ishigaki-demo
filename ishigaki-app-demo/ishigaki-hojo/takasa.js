@@ -1,10 +1,11 @@
-const tukaikata = document.getElementById('tukaikata-takasa');
+/*変える過程で消した部分は基本コメントアウトしています*/
+/*const tukaikata = document.getElementById('tukaikata-takasa');
 const setumei = document.getElementById('tukaikata-takasa-text');
 
 tukaikata.addEventListener('click', () => {
   // ボタンクリックでhiddenクラスを付け外しする
   setumei.classList.toggle('hidden');
-});
+});*/
 const shasin  = document.getElementById('takasa-shasin');
 const canvas  = document.getElementById('preview');      // ← canvas を取得
 const ctx     = canvas.getContext('2d');
@@ -33,13 +34,14 @@ shasin.addEventListener('change', (e) => {
 
 });
 
-const shakudo = document.getElementById('shakudo');
-const hakaru = document.getElementById('hakaru');
+/*const shakudo = document.getElementById('shakudo');
+const hakaru = document.getElementById('hakaru');*/
+const step4 = document.getElementById('step4');
 const tensha = [];
 const tenna = [];
 
 let mode = "none";
-function iroduke (){
+/*function iroduke (){
 if(mode === "none"){
   hakaru.classList.remove('active');
   shakudo.classList.remove('active');
@@ -50,20 +52,40 @@ if(mode === "none"){
   hakaru.classList.toggle('active');
   shakudo.classList.remove('active');
 }
-}
+}*/
 
-shakudo.addEventListener('click',(e)=>{
+/*shakudo.addEventListener('click',(e)=>{
   mode = "shakudo"; 
-  iroduke();
 })
 
 
 
 hakaru.addEventListener('click',(e)=>{
   mode = "hakaru";
-  iroduke();
-})
+})*/
 
+const sousin = document.getElementById('kettei');
+const suuzi = document.getElementById('jissai');
+const wariai = document.getElementById('wariai');
+const tyanto = document.getElementById('tyanto');
+const kijunjityou = document.getElementById('kijunjityou');
+let distance = null;
+let kijun = null;
+sousin.addEventListener('click',(e) => {
+    if (!gazou || !fitt){
+    kijunjityou.innerHTML = '<span class="blue";">まずstep.1を行ってください</span>';
+    return;
+  }
+  mode = "shakudo"; 
+  /*if (tensha.length < 2) {
+     wariai.innerHTML = '基準設定：<span class="blue";">まず「基準設定」で2点を選んでください</span>';
+    return;
+  }*/
+  // px(canvas内)/cm
+  kijun = Number(suuzi.value);
+  kijunjityou.innerHTML = '<span class="green";">送信完了！</span>';
+  
+});
 
 // ★ これまで2つあったものを削除して、1つにまとめる
 canvas.addEventListener('click', (e) => {
@@ -78,6 +100,13 @@ canvas.addEventListener('click', (e) => {
   if (mode === 'shakudo') {
     tensha.push({ x, y });
     if (tensha.length > 2) tensha.shift(); // 最新2点だけ残す
+    if (tensha.length >= 2){
+    distance = kyori(tensha[0], tensha[1]) / kijun;
+    wariai.innerHTML = '基準設定：<span class="green";">完了！</span>';
+    mode='hakaru';
+    step4.classList.remove('hidden');
+}
+    
   } else if (mode === 'hakaru') {
     tenna.push({ x, y });
     if (tenna.length > 2) tenna.shift();
@@ -152,23 +181,7 @@ function drawAll() {
     ctx.restore(); // ★ ← restore() に () を追加！
   }
 }
-const sousin = document.getElementById('kettei');
-const suuzi = document.getElementById('jissai');
-const wariai = document.getElementById('wariai');
-const tyanto = document.getElementById('tyanto');
-let distance = null;
 
-sousin.addEventListener('click',(e) => {
-  if (tensha.length < 2) {
-     wariai.innerHTML = '基準設定：<span class="blue";">まず「基準設定」で2点を選んでください</span>';
-    return;
-  }
-  // px(canvas内)/cm
-  distance = kyori(tensha[0], tensha[1]) / Number(suuzi.value);
-  wariai.innerHTML = '基準設定：<span class="green";">完了！</span>';
-
-  
-});
 
 function kyori(p1, p2) {
   return Math.hypot(p2.x - p1.x, p2.y - p1.y);
@@ -185,7 +198,11 @@ const risetto = document.getElementById('risetto');
 risetto.addEventListener('click',(e)=>{
   tensha.length = 0;
   tenna.length  = 0;
+  mode = null;
+  kijun = null;
   distance = null;
+  step4.classList.add('hidden');
+  kijunjityou.innerHTML = '<span class="blue";">未送信</span>';
   wariai.innerHTML = '基準設定：<span class="blue";">未設定</span>';
   tyanto.textContent = '結果：';
   
