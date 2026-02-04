@@ -1,223 +1,287 @@
-.hidden {
-  display: none;
+/* ===== Unified modern UI (match koubai.css layout) ===== */
+:root{
+  --bg1:#f8fafc;
+  --bg2:#eef2ff;
+
+  --panel: rgba(17,24,39,.90);     /* dark panel for section headers */
+  --card: rgba(255,255,255,.92);
+  --card2: rgba(255,255,255,.86);
+
+  --text:#111827;
+  --muted: rgba(17,24,39,.72);
+
+  --border: rgba(17,24,39,.12);
+  --primary:#2563eb;
+  --primary-hover:#1d4ed8;
+  --ring: rgba(37,99,235,.35);
+
+  --radius: 18px;
+  --shadow: 0 14px 28px rgba(17,24,39,.12);
+  --shadow-soft: 0 10px 18px rgba(17,24,39,.10);
 }
+
+*{ box-sizing:border-box; }
+html, body{ height:100%; }
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  color: var(--text);
+  min-height: 100dvh;
+  padding: 64px 14px 60px;
+}
+
+/* コンテンツ幅を抑える（横に伸びすぎ防止） */
+body > *{
+  max-width: 980px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* ===== Header / Title ===== */
+header{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 10px 0 20px;
+  margin: 0 auto 14px;
+  background: linear-gradient(180deg, rgba(248,250,252,.92), rgba(238,242,255,.70));
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(17,24,39,.08);
+}
+
+h1{
+  text-align:center;
+  margin: 10px 0 36px;
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+
+/* ===== Back link ===== */
+#modoru{
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 1000;
+  margin: 0;
+}
+
+#modoru a{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 14px;
+  color: #fff;
+  background: rgba(0,0,0,.55);
+  border: 1px solid rgba(255,255,255,.35);
+  box-shadow: 0 10px 22px rgba(0,0,0,.25);
+  backdrop-filter: blur(6px);
+  transition: transform .12s ease, background-color .12s ease;
+}
+#modoru a:hover{ background: rgba(0,0,0,.75); transform: translateY(-1px); }
+#modoru a:focus-visible{ outline:none; box-shadow: 0 0 0 4px var(--ring), 0 10px 22px rgba(0,0,0,.25); }
+
+/* ===== Nav (same feel as koubai) ===== */
+.nav ul{
+  list-style:none;
+  padding: 0;
+  margin: 0;
+  display:flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  justify-content:center;
+}
+.nav li{ margin:0; }
+.nav a{
+  display:inline-flex;
+  align-items:center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  text-decoration:none;
+  font-weight: 800;
+  color: var(--primary);
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(17,24,39,.10);
+  box-shadow: 0 8px 18px rgba(17,24,39,.08);
+  transition: transform .12s ease, background-color .12s ease, border-color .12s ease;
+}
+.nav a:hover{
+  background: rgba(255,255,255,.92);
+  border-color: rgba(37,99,235,.35);
+  transform: translateY(-1px);
+}
+.nav a:focus-visible{
+  outline:none;
+  box-shadow: 0 0 0 4px var(--ring), 0 8px 18px rgba(17,24,39,.08);
+}
+
+/* ===== Generic blocks ===== */
+.hidden{ display:none !important; }
+.kaku{ display:none; } /* 元CSS互換：不要ならHTML側で削除OK */
+
+.middle{
+  padding-bottom: 50px;
+}
+
+#setsumei{
+  text-align: center;
+}
+
+h2, .daimei{
+  margin: 18px 0 12px;
+  font-size: 22px;
+  font-weight: 900;
+}
+h3{
+  margin: 14px 0 10px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+small, .muted{ color: var(--muted); }
+.dekap, #tyanto{ color: var(--text); } /* 以前の白文字指定を解除 */
+
+/* ===== Buttons ===== */
+button, .botan a, .btn-container a{
+  font: inherit;
+}
+
+button,
+li button{
+  border-radius: 14px;
+  border: 1px solid rgba(37,99,235,.35);
+  background: rgba(37,99,235,.10);
+  color: var(--text);
+  font-weight: 900;
+  padding: 10px 12px;
+  cursor:pointer;
+  box-shadow: 0 10px 18px rgba(17,24,39,.10);
+  transition: transform .12s ease, background-color .12s ease, border-color .12s ease;
+}
+button:hover,
+li button:hover{
+  background: rgba(37,99,235,.16);
+  transform: translateY(-1px);
+}
+button:active,
+li button:active{ transform: translateY(0) scale(.99); }
+button:focus-visible,
+li button:focus-visible{
+  outline:none;
+  box-shadow: 0 0 0 4px var(--ring), 0 10px 18px rgba(17,24,39,.10);
+}
+
+/* 元CSSの「active」表現は残す（計測モード等の見た目） */
+#shakudo.active,
+#hakaru.active{
+  background: rgba(37,99,235,.85);
+  color: #fff;
+  border-color: rgba(37,99,235,.85);
+}
+
+/* ボタン群の整列（koubai.css風） */
+.btn-container{
+  display:flex;
+  justify-content:center;
+  gap: 10px;
+  margin: 10px auto 16px;
+  flex-wrap: wrap;
+}
+
+/* 既存HTML互換：botan ul li の横並び */
+.botan ul{ padding:0; margin: 0; }
 .botan ul li{
   list-style-type: none;
   display: inline-block;
-  margin-right: 15px;
+  margin-right: 10px;
 }
-.botan ul li.kakko {
-  margin-right: 1px;
+.botan ul li.kakko { margin-right: 1px; }
+
+/* ===== Inputs ===== */
+input[type="text"],
+input[type="number"],
+textarea{
+  width: min(100%, 420px);
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(17,24,39,.22);
+  background: rgba(255,255,255,.96);
+  color: var(--text);
+}
+input[type="text"]:focus-visible,
+input[type="number"]:focus-visible,
+textarea:focus-visible{
+  outline:none;
+  box-shadow: 0 0 0 4px var(--ring);
+  border-color: rgba(37,99,235,.55);
 }
 
-.kaku{
-  display: none;
+/* ===== Images / Preview canvas ===== */
+img{
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(17,24,39,.12);
+  box-shadow: 0 10px 18px rgba(17,24,39,.10);
 }
 
-#shakudo.active {
-      background: #6a93ec;
-      color: white;
-    }
-  
-#hakaru.active {
-    background: #6a93ec;
-    color: white;
-  }
-
-/*全体的な雰囲気を予備診断に合わせました*/
-h1 {
-  color: rgb(207, 207, 207);
-  background-color: rgb(38, 38, 38);
-  padding: 45px;
-  margin: 0;
-}
-h2 {
-  color: white;
-    margin: 30px 0 45px;
-    font-size: 26.5px;
+canvas#preview,
+#preview{
+  display:block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(17,24,39,.12);
+  box-shadow: 0 10px 18px rgba(17,24,39,.10);
+  background: rgba(255,255,255,.8);
+  margin: 0 auto 16px;
 }
 
-.kobai li ul{
-  list-style-type: none;
-  display: inline-block;
-}
-.kaku{
-  display: none;
-}
+/* ===== takasa.html specific adjustments ===== */
+.e{ text-align:center; margin: 14px auto 0; }
 
-body {
-  font-size: 16px;
-  margin: 0;
-  -webkit-text-size-adjust: 100%;
-  background:
-    radial-gradient(900px 420px at 20% 10%, rgba(79,124,255,.25), transparent 60%),
-    radial-gradient(700px 360px at 85% 25%, rgba(255,255,255,.10), transparent 55%),
-    linear-gradient(160deg, #1a264c, #101a33);
-}
-.nav ul {
-    margin: 0;
-    padding: 20px 0;
-   
-  text-align: center;
-  background-color: rgb(38, 38, 38);
-}
-.nav{
-    margin-bottom: 60px;
-    
-}
-
-
-.nav ul li {
-    list-style-type: none;
-    display: inline;
-     margin: 0 8px;
-   
-    color: rgb(255, 255, 255);
-    font-size: 20px;
-    
-    
-    
-}
-.nav ul li a {
-    text-decoration: none;
-     padding: 16px 45px 20px;
-     border-top: solid 1.5px rgb(255, 255, 255);
-     
-}
-.nav ul li a:visited {
-    color: rgb(255, 255, 255);
-}
-.k{
-    
-    padding-bottom:15px;
-  text-decoration: none;
-  border-bottom: 7px solid rgb(165, 42, 165);
-}
-
-
-.nav ul li a:hover {
-    
-    background-color: rgba(23, 156, 136, 0.527);
-    text-decoration: none;
-
-}
-
-.nav ul li.k a:hover {
-    padding: 16px 45px 15px;
-    background-color: rgba(23, 156, 136, 0.524);
-    padding-bottom: 7px solid rgb(165, 42, 165);
-    text-decoration: none;
-}
-p {
-  color: white;
-    margin: 10px 0 20px;
-  font-size: 18px;
-}
-.dekap{
-  color: white;
-}
-#tyanto{
-  color: white;
-}
-
-
-.e{
-  text-align: center;
-}
-#takasa-shasin{
-  color: white;
-  padding-right: 1000px;
-  font-size: 16px;
-  width: 120px;
-  height: 40px;
-}
-
-li button{
-  font-size: 16px;
-  width: 120px;
-  height: 32px;
-  margin: 6px 3px;
-}
-
-#tukaikata-takasa{
-   font-size: 16px;
-  width: 75px;
-  height: 28px;
-}
-#kettei{
-   font-size: 16px;
-  width: 90px;
-  height: 36px;
-}
-#keisoku{
-  font-size: 16px;
-  width: 200px;
-  height: 36px;
-}
+#tukaikata-takasa,
+#kettei,
+#keisoku,
 #jissai{
-  font-size: 16px;
-  width: 200px;
-  height: 26px;
-}
-.setsumei {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white; /* 初期は白(背景なし) */
-}
-.green{
-  color: rgb(67, 219, 103);
-}
-.blue{
-  color: rgb(188, 199, 255);
-}
-#modoru{
-  margin: auto;
-  padding-left: 3px;
-  font-size: 35px;
-  background-color: rgb(38, 38, 38);
-}
-#modoru a{
-  color: white;
-}
-header {
-  background-color: black;
+  /* 旧CSSのサイズ指定を過度に固定しない */
+  width: auto;
+  height: auto;
 }
 
-@media (max-width: 600px) {
-  body {
-    font-size: 16px; /* 文字サイズは標準くらい */
-    padding: auto;
-  }
-  .middle{
-    padding: 0 8px;           /* 画面端に少しだけ余白 */
-  }
-  header {
-    background-color: rgb(38, 38, 38);
-  }
+/* 説明エリア（旧 .setsumei をカードに） */
+.setsumei{
+  margin: 10px auto 0;
+  padding: 12px 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
 
-  h1 {
-    font-size: 20px;
-    padding: 20px;
-    text-align: center;
-  }
+/* 色クラスは残す（文章ハイライト用） */
+.green{ color: rgb(67, 219, 103); }
+.blue{ color: rgb(72, 110, 255); }
 
-  .nav ul {
-    padding: 10px 0;
-  }
+/* 勾配調査ボタンを強調表示（青＋白文字＋大きめ） */
+.nav a.nav-koubai{
+  background: var(--primary);   /* 青 */
+  color: #fff;                 /* 白文字 */
+  border-color: rgba(37,99,235,.55);
 
-  .nav ul li {
-    display: block;           /* 横並び → 縦に並べる */
-    margin: 4px 0;
-  }
+  /* 1.5倍くらい大きく */
+  transform: scale(1.2);
+  transform-origin: center;
+}
 
-  .nav ul li a {
-    display: block;           /* クリックしやすいように幅いっぱい */
-    padding: 10px 0;
-  }
-  canvas#preview {
-  display: block;
-  max-width: 100%;  /* 画面からはみ出さないように */
-  height: auto;     /* 縦横比を保ったまま縮める */
-  margin: 0 auto 20px;  /* 中央に配置＋下に少し余白 */
-  }
+/* hover時 */
+.nav a.nav-koubai:hover{
+  background: var(--primary-hover);
+  color: #fff;
+  transform: scale(1.3) translateY(-1px);
 }

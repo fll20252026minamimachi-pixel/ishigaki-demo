@@ -12,8 +12,13 @@
 
         <p id="modoru"><a href="index.html">＜ホームへ</a></p>
         <h1>文化財石垣予備診断結果</h1>
-        <button id="thepdf">PDFでダウンロード</button>
-         <span  id="downloading" class="hide">ダウンロード中...</span>
+        <div>
+            <button id="thepdf">PDFでダウンロード</button>
+            <span id="downloading" class="hide" aria-live="polite">
+                <span class="spinner" aria-hidden="true"></span>
+                ダウンロード中...
+            </span>
+        </div>
 
         <!-- ここにJSで表を挿入します -->
         <div id="pdfarea">

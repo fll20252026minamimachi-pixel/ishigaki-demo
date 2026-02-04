@@ -1,62 +1,51 @@
 <!DOCTYPE html>
 <html lang = "ja">
     <head>
-        <meta chartset = "utf-8">
-        <title>石垣診断補助サイト</title>
+        <meta charset = "utf-8">
+        <title>文化財石垣予備診断補助機能</title>
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <meta name="description" content="">
         <link rel="stylesheet" href="css/koubai.css">
-
+        <link rel="icon" href="data:,">
     </head>
     <body>
-       
+        <p id="modoru"><a href="../index.html">＜戻る</a></p>
         <header>
-            <p id="modoru"><a href="../index.html">←</a></p>
-            <h1>石垣診断補助サイト</h1>
-            
+            <h1>文化財石垣予備診断補助機能</h1>
             <nav class="nav">
-            <ul>  
-                <li class = "k"><a href="koubai.html">勾配調査</a></li>
-                <li><a href="takasa.html">高さ調査</a></li>
-                
-                
-            </ul>
+                <ul>  
+                    <li class = "k"><a href="koubai.html" class="nav-koubai">勾配計測</a></li>
+                    <li><a href="takasa.html">高さ計測</a></li>
+                </ul>
             </nav>
         </header>
         <nav class="middle">
-        <h2>勾配調査</h2>
-        <p>ここでは写真を読み込み坂の部分をマークすることで石垣の平均勾配や最大・最小勾配、差を調べることができます</p>
-        <div class="btn-container">
-            <button id="tukaikata-koubai" class="tukaikata">使い方</button>
+            <p id="setsumei">写真を使って勾配の角度を算出できます</p>
+            <nav class="kobai">
+                <fieldset>
+                    <legend>Step.1 写真を選択する</legend>
+                    <input type="file" accept="image/*" id="koubai-shasin" />
+                </fieldset>
+                <fieldset>
+                    <legend>Step.2 石垣の傾斜の部分に沿うようにクリックして線を引く</legend>
+                    <button id ="risetto" >リセット</button>
+                    <div class="e">
+                        <canvas id="preview" width="1000"  height="500"></canvas>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>結果</legend>
+                    <div><label>平均角度：<span id="heikin">—</span></label></div>
+                    <div><label>最大角度：<span id="dai">—</span></label></div>
+                    <div><label>最小角度：<span id="shou">—</span></label></div>
+                    <div><label>差　　　：<span id="sa">—</span></label></div>
+                </fieldset>
+            </nav>
 
-            <!-- クリックで表示させるテキストにはhiddenクラスを付ける -->
-            <p id="tukaikata-koubai-text" class="hidden">①「ファイルを選択」ボタンから写真を選択<br>
-②石垣の傾きの部分に沿うように点をつける<br>
-③平均勾配や最大最小、差がでてくる。<br>
-            ※結果ボタンを押すと結果を隠すことができます。</p>
-        </div>
-        <nav class="kobai">
-            <li>
-                <ul><input type="file" accept="image/*" id="koubai-shasin"></ul><br>
-                <ul><button id ="risetto" >リセット</button></ul>
-                <ul><button id="kekka" >結果</button></ul>
-                <ul><p id="heikin" >平均勾配：—</p></ul>
-                <ul><p id="dai" >最大：—</p></ul>
-                <ul><p id="shou" >最小：—</p></ul>
-                <ul><p id="sa" >差：—</p></ul>
-                
-            </li>
-        </nav>
-
-        <div class="e">
-        <canvas id="preview" width="1000"  height="500"></canvas>
-     </div>
         </nav>
 
         <script src="koubai.js"></script>
     </body>
-
-
 </html>
 
 

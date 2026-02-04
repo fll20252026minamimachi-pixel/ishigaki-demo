@@ -1,59 +1,58 @@
 <!DOCTYPE html>
 <html lang = "ja">
     <head>
-        <meta chartset = "utf-8">
-        <title>石垣診断補助サイト</title>
+        <meta charset = "utf-8">
+        <title>文化財石垣予備診断補助機能</title>
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <meta name="description" content="">
         <link rel="stylesheet" href="css/takasa.css">
-
+        <link rel="icon" href="data:,">
     </head>
     <body>
+        <p id="modoru"><a href="../index.html">＜戻る</a></p>
         <header>
-            <p id="modoru"><a href="../index.html">←</a></p>
-            <h1>石垣診断補助サイト</h1>
+            <h1>文化財石垣予備診断補助機能</h1>
             <nav class="nav">
-            <ul>
-                <li><a href="koubai.html">勾配調査</a></li>
-                <li class="k"><a href="takasa.html">高さ調査</a></li>
-                
-                
-            </ul>
+                <ul>
+                    <li><a href="koubai.html">勾配計測</a></li>
+                    <li class="k"><a href="takasa.html" class="nav-koubai">高さ計測</a></li>
+                </ul>
             </nav>
         </header>
         <nav class="middle">
-        <h2>高さ調査</h2>
-        <p>ここでは写真を読み込み範囲を指定することで高さ(長さ)を調べることができます</p>
-        <div class="btn-container">
-            <button id="tukaikata-takasa">使い方</button>
+            <p id="setsumei">写真を使って高さ(長さ)を算出できます</p>
+            <div class="btn-container">
+                <button id="tukaikata-takasa">使い方</button>
 
-            <!-- クリックで表示させるテキストにはhiddenクラスを付ける -->
-            <p id="tukaikata-takasa-text" class="hidden">①「ファイルを選択」ボタンから写真を選択<br>
-②「基準設定」を押す<br>
-③基準にしたい二点を選ぶ<br>
-④長さをボックス部分に入力し、「設定」を押す<br>
-⑤「長さ計測」を押し、計測したい二点を押す<br>
-⑥結果の部分に長さが出てくる</p>
-        </div>
-        <nav class="botan">
-        <ul>
-        <li><input type="file" accept="image/*" id="takasa-shasin"></li><br>
-        <li><button id="shakudo">基準設定</button></li>
-        <li><button id="hakaru">長さ計測</button></li>
-        
-        <li class="kakko"><input type="number" id="jissai" placeholder="実長(基準設定)(cm)"> </li>
-        <li><input type="submit" id="kettei"　value="設定"></li>
-    　　<li><button id ="risetto" >リセット</button></li><br>
-        <li><button id = "keisoku">長さを出す(長さ計測)</button></li><br>
-        <li><div id = "wariai" class="dekap">基準設定 : <span class="blue">未設定</span></div></li><br>
-        <li><div id ="tyanto" >結果：</div></li>
-        
+                <!-- クリックで表示させるテキストにはhiddenクラスを付ける -->
+                <p id="tukaikata-takasa-text" class="hidden">①「ファイルを選択」ボタンから写真を選択<br>
+    ②「基準設定」を押す<br>
+    ③基準にしたい二点を選ぶ<br>
+    ④長さをボックス部分に入力し、「設定」を押す<br>
+    ⑤「長さ計測」を押し、計測したい二点を押す<br>
+    ⑥結果の部分に長さが出てくる</p>
+            </div>
+            <nav class="botan">
+                <fieldset>
+                    <legend>Step.1 写真を選択する</legend>
+                    <input type="file" accept="image/*" id="takasa-shasin" />
+                </fieldset>
 
-        </ul>
-        </nav>
-        <div class = "e">
-        <canvas id="preview" width="1000"  height="500"></canvas>
-        </div><br>
+                <ul>
+                    <li><button id="shakudo">基準設定</button></li>
+                    <li><button id="hakaru">長さ計測</button></li>
+                    
+                    <li class="kakko"><input type="number" id="jissai" placeholder="実長(基準設定)(cm)"> </li>
+                    <li><input type="submit" id="kettei"　value="設定"></li>
+                　　<li><button id ="risetto" >リセット</button></li><br>
+                    <li><button id = "keisoku">長さを出す(長さ計測)</button></li><br>
+                    <li><div id = "wariai" class="dekap">基準設定 : <span class="blue">未設定</span></div></li><br>
+                    <li><div id ="tyanto" >結果：</div></li>
+                </ul>
+            </nav>
+            <div class = "e">
+                <canvas id="preview" width="1000"  height="300"></canvas>
+            </div><br>
         </nav>
         
         <script src="takasa.js"></script>
