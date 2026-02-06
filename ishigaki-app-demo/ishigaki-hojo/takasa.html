@@ -39,36 +39,30 @@
                     <input type="file" accept="image/*" id="takasa-shasin" />
                 </fieldset>
 
-                <ul>
-                    <fieldset>
-                        <legend>Step.2 写真内の基準となるものの長さを入力</legend>
-                    <li class="kakko"><input type="number" id="jissai" placeholder="実長(基準設定)(cm)"> </li>    
-                    <li><input type="submit" id="kettei"　value="設定"></li><br>
-                    <li><div id="kijunjityou"><span class="blue">未送信</span></li>
-                    </fieldset>
-                   <!-- <li><button id="shakudo">基準設定</button></li>
+                <fieldset>
+                    <legend>Step.2 写真内の基準とする物の長さを入力</legend>
+                    <span class="kakko"><input type="number" id="jissai" placeholder=""> cm</span>
+                    <!--<input type="submit" id="kettei"　value="設定"> -->
+                    <!--<div id="kijunjityou"><span class="blue">未送信</span> -->
+                </fieldset>
+                    <!-- <li><button id="shakudo">基準設定</button></li>
                     <li><button id="hakaru">長さ計測</button></li>-->
-                    
-                    
-                    <fieldset>
-                        <legend>Step.3 写真内で長さの基準となるものの両端をクリック</legend>
-                    <li><button id ="risetto" >リセット</button></li>
-                    <li><div id = "wariai" class="dekap">基準設定 : <span class="blue">未設定</span></div></li><br>
-                    <li id="step4" class="hidden">Step.4 写真内で計測したいものの両端をクリック</li>
-                    <li class = "e">
-                    <canvas id="preview" width="1000"  height="500"></canvas>
-                    </li><br>
-                    <li><button id = "keisoku">長さを出す(長さ計測)</button></li><br>
-                    </fieldset>
-                    
-                    <fieldset>
+
+                <fieldset>
+                    <legend>Step.3 写真内で長さの基準とする物の両端をクリック</legend>
+                    <button id="risetto" >リセット</button>
+                    <!--<div id="wariai" class="dekap">基準設定 : <span class="blue">未設定</span></div> -->
+                    <div id="step4" class="hidden">Step.4 写真内で計測する物の両端をクリック</div>
+                    <canvas class = "e" id="preview" width="1000"  height="500"></canvas>
+                    <!-- <button id = "keisoku">長さを出す(長さ計測)</button> -->
+                </fieldset>
+                
+                <fieldset>
                     <legend>結果</legend>
-                    <li><div id ="tyanto">ー</div></li>
-                    </fieldset>
-                </ul>
+                    <span><span id ="tyanto">ー</span> cm</span>
+                </fieldset>
             </nav>
-            
         </nav>
-        <script src="takasa2.js"></script>
+        <script src="takasa.js"></script>
     </body>
 </html>
