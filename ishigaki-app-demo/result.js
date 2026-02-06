@@ -396,7 +396,8 @@ thepdf.addEventListener("click", async () => {
       theme: "plain",
       alternateRowStyles: { fillColor: false },
 
-      styles: { font: "NotoSansJP", fontSize: 10, cellPadding: 2, overflow: "linebreak" },
+      //罫線があったほうがわかりやすいかなと思ったので入れました
+      styles: { font: "NotoSansJP", fontSize: 10, cellPadding: 2, overflow: "linebreak", lineWidth: 0.2, lineColor:[0,0,0], },
       columnStyles: {
         0: { cellWidth: w0 },
         1: { cellWidth: w1, overflow: "linebreak" },
@@ -510,6 +511,10 @@ thepdf.addEventListener("click", async () => {
           cellPadding: 2,
           overflow: "linebreak",
           fillColor: [255, 255, 255],
+          
+          //罫線があったほうがわかりやすいかなと思ったので入れました.
+          lineWidth: 0.2,  
+          lineColor:[0,0,0],
         },
 
         // ✅1行目（ヘッダ）だけ背景色あり
@@ -554,14 +559,14 @@ thepdf.addEventListener("click", async () => {
           ]],
           margin: { left: MARGIN_X, right: MARGIN_X },   // ★追加
           tableWidth: "auto",                             // ★追加
-          styles: { font: "NotoSansJP", fontSize: 10, cellPadding: 2, overflow: "linebreak" },
+          styles: { font: "NotoSansJP", fontSize: 10, cellPadding: 2, overflow: "linebreak",textColor:[50,50,50]},//文字の色を少し変えました
           columnStyles: {
             0: { cellWidth: w0 },
             1: { cellWidth: w1 },
             2: { cellWidth: w2, halign: "center" },
             3: { cellWidth: w3 }
           },
-          tableLineWidth: 0.1,
+          tableLineWidth: 0.4,
         });
       }
 
@@ -680,3 +685,4 @@ async function ensureJapaneseFont(pdf) {
     pdf.addFont("NotoSansJP-Bold.ttf", "NotoSansJP", "bold", "Identity-H");
   }
 }
+
